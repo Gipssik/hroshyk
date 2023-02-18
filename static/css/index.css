@@ -1,0 +1,119 @@
+body {
+    background-color: #212121 !important;
+    color: #fff !important;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid rgba(145, 70, 255, 0.65);
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 30px;
+}
+
+.twitch-btn, .logout-btn {
+    background-color: #9146FF;
+    border: 1px solid #6441a5;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.logout-btn {
+    background-color: transparent;
+    border: 1px solid #a9a9a9;
+}
+
+.twitch-btn:hover {
+    background-color: #4b2e80;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+    background-color: #e32121;
+    border: 1px solid #e32121;
+    transition: all 0.2s ease-in-out;
+}
+
+.no-attention-fill {
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover .no-attention-fill {
+    fill: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.authenticated {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: center;
+}
+
+.sidebar-dark {
+    background-color: #1a1a1a !important;
+}
+
+.user-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-image {
+    width: 45px;
+    height: 45px;
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dropdown-menu li:hover a {
+    background-color: #424242 !important;
+}
