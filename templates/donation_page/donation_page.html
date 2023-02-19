@@ -1,0 +1,22 @@
+{% extends 'cabinet.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<div class="form-with-preview">
+		<form action="#" method="post">
+			{% if messages %}
+				{% include 'utils/messages.html' %}
+			{% endif %}
+			{% csrf_token %}
+			{{ form|crispy }}
+			<div class="submit-btn">
+				<button type="submit" class="twitch-btn">Зберегти</button>
+			</div>
+		</form>
+		<div class="vr"></div>
+		<div class="preview">
+			{% include 'donation_page/viewer_donation_page.html' %}
+		</div>
+	</div>
+{% endblock %}

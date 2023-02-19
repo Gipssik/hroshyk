@@ -24,12 +24,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_twitch_auth",
     "debug_toolbar",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "accounts.middlewares.AuthenticationMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -100,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "accounts.auth.TwitchBackend",
@@ -112,6 +117,9 @@ LOGIN_REDIRECT_URL = "home"
 TWITCH_CLIENT_ID = env("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = env("TWITCH_CLIENT_SECRET")
 TWITCH_REDIRECT_URI = env.str("TWITCH_REDIRECT_URI")
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LANGUAGE_CODE = "uk"
 

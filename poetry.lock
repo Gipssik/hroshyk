@@ -38,6 +38,21 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "crispy-bootstrap5"
+version = "0.7"
+description = "Bootstrap5 template pack for django-crispy-forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2"
+django-crispy-forms = ">=1.13.0"
+
+[package.extras]
+test = ["pytest", "pytest-django"]
+
+[[package]]
 name = "django"
 version = "4.1.6"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -53,6 +68,17 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-crispy-forms"
+version = "2.0"
+description = "Best way to have Django DRY forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2"
 
 [[package]]
 name = "django-debug-toolbar"
@@ -153,14 +179,16 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "19b64c19aa061cb903c75c12c2a1390c4442224513dd7322a1b47dc76d81a81c"
+content-hash = "7ef28ff5eddc0d3fe998d0384553a8cb21d531e3a385fcf7bb3ed942a28ebca3"
 
 [metadata.files]
 asgiref = []
 bcrypt = []
 certifi = []
 charset-normalizer = []
+crispy-bootstrap5 = []
 django = []
+django-crispy-forms = []
 django-debug-toolbar = []
 django-environ = []
 django-twitch-auth = []
