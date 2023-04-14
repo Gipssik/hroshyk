@@ -16,6 +16,7 @@ INTERNAL_IPS = ["127.0.0.1"]
 INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "donation_page.apps.DonationPageConfig",
+    "donations.apps.DonationsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
