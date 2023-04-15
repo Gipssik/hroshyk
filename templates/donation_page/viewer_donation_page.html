@@ -10,30 +10,15 @@
 			<p>{{ donation_page.title_subtext }}</p>
 		</div>
 
-{#		<form method="POST">#}
-{#			{% csrf_token %}#}
-{#			<label for="nickname">{{ donation_page.nickname_placeholder }}</label>#}
-{#			<input type="text" name="nickname" id="nickname" minlength="{{ donation_page.nickname_min_length }}" maxlength="{{ donation_page.nickname_max_length }}" required>#}
-{#			<br>#}
-{#			<label for="amount">{{ donation_page.amount_placeholder }}</label>#}
-{#			<input type="number" name="amount" id="amount" min="{{ donation_page.amount_min }}" max="{{ donation_page.amount_max }}" required>#}
-{#			<br>#}
-{#			<label for="message">{{ donation_page.message_placeholder }}</label>#}
-{#			<textarea name="message" id="message" minlength="{{ donation_page.message_min_length }}" maxlength="{{ donation_page.message_max_length }}"></textarea>#}
-{#			<br>#}
-{#			<button type="submit">{{ donation_page.donate_button_text }}</button>#}
-{#		</form>#}
-		<form action="#" method="post">
-			{% if messages %}
-				{% include 'utils/messages.html' %}
-			{% endif %}
+        <form action="#" method="post">
+            <div class="progress-bar">
+		        <p>{{ donation_page.target_title|curled_format:donation_page.target_amount }}</p>
+            </div>
 			{% csrf_token %}
 			{{ form|crispy }}
 			<div class="submit-btn">
-				<button type="submit" class="twitch-btn">Зберегти</button>
+				<button type="submit" class="twitch-btn">{{ donation_page.donate_button_text }}</button>
 			</div>
 		</form>
-
-		<p>{{ donation_page.target_title|curled_format:donation_page.target_amount }}</p>
 	</div>
 {% endblock %}

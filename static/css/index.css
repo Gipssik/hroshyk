@@ -23,7 +23,10 @@ header {
 
 #main-wrapper {
     display: flex;
-    height: 100vh;
+}
+
+#main-wrapper main {
+    margin-left: 280px;
 }
 
 main {
@@ -141,11 +144,11 @@ a:hover .no-attention-fill {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    position: relative;
+    position: fixed;
     overflow: auto;
     top: 0;
+    bottom: 0;
     z-index: 9999;
-    height: 100%;
     width: 280px;
     transition: all 0.15s ease-out;
     background: #1a1a1a;
@@ -200,6 +203,7 @@ a:hover .no-attention-fill {
 
 .preview {
     border: 1px solid #6441a5;
+    height: fit-content;
 }
 
 .submit-btn {
@@ -214,6 +218,10 @@ a:hover .no-attention-fill {
     border: 1px solid #9146FF !important;
     color: #fff !important;
     padding: 10px 15px !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .messages {
@@ -231,7 +239,14 @@ a:hover .no-attention-fill {
 .donation-page-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+}
+
+.donation-page-container form {
+    padding: 20px 50px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .donation-page-title-block {
