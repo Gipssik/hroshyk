@@ -122,8 +122,8 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "psycopg2"
-version = "2.9.5"
+name = "psycopg2-binary"
+version = "2.9.6"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
 category = "main"
 optional = false
@@ -179,7 +179,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "7ef28ff5eddc0d3fe998d0384553a8cb21d531e3a385fcf7bb3ed942a28ebca3"
+content-hash = "2c7523bd365e37940f414dcf00856ae34ceb412d825cef86b5ce4fc2f12bbe58"
 
 [metadata.files]
 asgiref = []
@@ -193,7 +193,7 @@ django-debug-toolbar = []
 django-environ = []
 django-twitch-auth = []
 idna = []
-psycopg2 = []
+psycopg2-binary = []
 requests = []
 sqlparse = []
 tzdata = []

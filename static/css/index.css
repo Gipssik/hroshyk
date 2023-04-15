@@ -194,8 +194,11 @@ a:hover .no-attention-fill {
     flex: 0.25;
 }
 
-.preview {
+.preview-container {
     flex: 0.7;
+}
+
+.preview {
     border: 1px solid #6441a5;
 }
 
@@ -207,7 +210,7 @@ a:hover .no-attention-fill {
 }
 
 .form-control {
-    background: transparent !important;
+    background: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid #9146FF !important;
     color: #fff !important;
     padding: 10px 15px !important;
