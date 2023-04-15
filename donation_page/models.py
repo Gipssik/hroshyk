@@ -56,6 +56,7 @@ class DonationPage(models.Model):
     amount_max = models.IntegerField(default=10000, verbose_name="Максимальна сума")
     target_title = models.CharField(max_length=255, default="Ціль. Зібрано {} грн", verbose_name="Заголовок цілі")
     target_amount = models.IntegerField(default=10000, verbose_name="Сума цілі")
+    # TODO: static field target_current_amount
 
     widgets = models.ManyToManyField(Widget, related_name="donation_pages", verbose_name="Віджети")
 

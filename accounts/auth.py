@@ -26,6 +26,13 @@ class TwitchBackend(BaseTwitchBackend):
             }
             try:
                 user = User.objects.get(auth_id=user_data["auth_id"])
+                modified = False
+                for field_name in (TWITCH_USERNAME_FIELD, TWITCH_EMAIL_FIELD):
+                    if getattr(user, field_name) != user_data[field_name]:
+                        setattr(user, field_name, user_data[field_name])
+                        modified = True
+                if modified:
+                    user.save()
             except User.DoesNotExist:
                 user = User.objects.create_user(**user_data)
             return user

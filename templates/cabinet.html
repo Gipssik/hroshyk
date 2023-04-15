@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
-{% block sidebar %}
-	{% include 'nav/sidebar.html' %}
+
+{% block content %}
+	{% block sidebar %}
+		{% include 'nav/sidebar.html' %}
+	{% endblock %}
+	<main>
+		{% block cabinet-content %}{% endblock %}
+	</main>
 {% endblock %}
-{% block content %}{% endblock %}

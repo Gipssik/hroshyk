@@ -227,3 +227,26 @@ a:hover .no-attention-fill {
     border-radius: 5px;
     width: fit-content;
 }
+
+.donation-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.donation-page-title-block {
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+    background: rgb(75,46,128);
+    background: linear-gradient(90deg, rgba(75,46,128,1) 0%, rgba(100,65,165,1) 50%, rgba(75,46,128,1) 100%);
+}
+
+.donation-page-title-block h1 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.donation-page-title-block p {
+    font-style: italic;
+}
