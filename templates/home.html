@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock %}
 
 {% block nav %}
 	{% include 'nav/header.html' %}

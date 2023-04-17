@@ -2,6 +2,11 @@
 {% load formatter %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/viewer_donation_page.css' %}">
+{% endblock %}
 
 {% block content %}
 	<div class="donation-page-container">

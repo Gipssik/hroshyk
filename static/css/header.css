@@ -1,0 +1,42 @@
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.authenticated {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: center;
+}
+
+.user-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-image {
+    width: 45px;
+    height: 45px;
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dropdown-menu li:hover a {
+    background-color: #424242 !important;
+}
