@@ -54,11 +54,21 @@ class DonationPage(models.Model):
     nickname_max_length = models.IntegerField(default=69, verbose_name="Максимальна довжина нікнейму")
     amount_min = models.IntegerField(default=1, verbose_name="Мінімальна сума")
     amount_max = models.IntegerField(default=10000, verbose_name="Максимальна сума")
-    target_title = models.CharField(max_length=255, default="Ціль. Зібрано {} грн", verbose_name="Заголовок цілі")
+    target_title = models.CharField(max_length=255, default="На хаймарс", verbose_name="Заголовок цілі")
     target_amount = models.IntegerField(default=10000, verbose_name="Сума цілі")
-    # TODO: static field target_current_amount
+    target_current_amount = models.IntegerField(default=0, verbose_name="Зібрано грошей")
 
-    widgets = models.ManyToManyField(Widget, related_name="donation_pages", verbose_name="Віджети")
+    widgets = models.ManyToManyField(
+        Widget,
+        related_name="donation_pages",
+        verbose_name="Віджети",
+        null=True,
+        blank=True,
+    )
 
     def get_absolute_url(self):
         return reverse("donation_page")
+
+    def reset_current_target(self):
+        self.target_current_amount = 0
+        self.save()

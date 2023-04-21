@@ -15,6 +15,9 @@
 				{% include 'utils/messages.html' %}
 			{% endif %}
 			{% csrf_token %}
+			<div class="submit-btn">
+				<button type="submit" class="twitch-btn">Зберегти</button>
+			</div>
 			{{ form|crispy }}
 			<div class="submit-btn">
 				<button type="submit" class="twitch-btn">Зберегти</button>

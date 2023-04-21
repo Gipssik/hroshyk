@@ -1,0 +1,13 @@
+from django import template
+
+register = template.Library()
+
+
+@register.filter(name="percentage")
+def percentage(value, arg):
+    return int(value / arg * 100)
+
+
+@register.filter(name="float_percentage")
+def float_percentage(value, arg):
+    return round(value / arg * 100, 2)

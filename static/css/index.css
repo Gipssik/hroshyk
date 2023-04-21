@@ -101,7 +101,7 @@ a:hover .no-attention-fill {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    margin: 35px 0;
 }
 
 .messages {

@@ -27,3 +27,47 @@
 .donation-page-title-block p {
     font-style: italic;
 }
+
+.donation-page-progress-bar {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-bar-container {
+    height: 40px;
+    width: 100%;
+    border: 2px solid #4b2e80;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    height: 100%;
+    background: rgb(75,46,128);
+    background: linear-gradient(90deg, rgba(75,46,128,1) 0%, rgba(145,70,255,1) 100%);
+    position: absolute;
+}
+
+.progress-bar-container .progress-bar-current,
+.progress-bar-container .progress-bar-min,
+.progress-bar-container .progress-bar-target {
+    position: relative;
+    font-weight: bold;
+}
+
+.progress-bar-container .progress-bar-current {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.progress-bar-container .progress-bar-min {
+    left: 10px;
+    position: absolute;
+}
+
+.progress-bar-container .progress-bar-target {
+    right: 10px;
+    position: absolute;
+}

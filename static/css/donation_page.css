@@ -9,6 +9,7 @@
 
 .preview-container {
     flex: 0.7;
+    overflow-x: hidden;
 }
 
 .preview {
