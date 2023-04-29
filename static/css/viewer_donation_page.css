@@ -1,8 +1,12 @@
-.donation-page-container {
+.donation-page-container, .donation-page-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+
+.donation-page-form-container {
+    overflow-x: hidden;
 }
 
 .donation-page-container form {

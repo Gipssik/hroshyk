@@ -14,37 +14,38 @@
             <h1>{{ donation_page.title }}</h1>
             <p>{{ donation_page.title_subtext }}</p>
         </div>
-
-        <form action="#" method="post">
-            <div class="donation-page-progress-bar">
-                <h5>{{ donation_page.target_title }}</h5>
-                <div class="progress-bar-container">
-                    <div
-                            class="progress-bar"
-                            style="width: {{ donation_page.target_current_amount|percentage:donation_page.target_amount }}%;"
-                    >
-                    </div>
-                    <span class="progress-bar-min">0</span>
-                    <span class="progress-bar-current">
+        <div class="donation-page-form-container">
+            <form action="#" method="post">
+                <div class="donation-page-progress-bar">
+                    <h5>{{ donation_page.target_title }}</h5>
+                    <div class="progress-bar-container">
+                        <div
+                                class="progress-bar"
+                                style="width: {{ donation_page.target_current_amount|percentage:donation_page.target_amount }}%;"
+                        >
+                        </div>
+                        <span class="progress-bar-min">0</span>
+                        <span class="progress-bar-current">
                         {{ donation_page.target_current_amount }} грн
                         ({{ donation_page.target_current_amount|float_percentage:donation_page.target_amount|stringformat:".1f" }}%)
                     </span>
-                    <span class="progress-bar-target">{{ donation_page.target_amount }}</span>
-                </div>
-            </div>
-            {% csrf_token %}
-            {{ form|crispy }}
-            <div class="submit-btn">
-                {% if is_preview == True %}
-                    <div class="twitch-btn">
-                        {{ donation_page.donate_button_text }}
+                        <span class="progress-bar-target">{{ donation_page.target_amount }}</span>
                     </div>
-                {% else %}
-                    <button type="submit" class="twitch-btn">
-                        {{ donation_page.donate_button_text }}
-                    </button>
-                {% endif %}
-            </div>
-        </form>
+                </div>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="submit-btn">
+                    {% if is_preview == True %}
+                        <div class="twitch-btn">
+                            {{ donation_page.donate_button_text }}
+                        </div>
+                    {% else %}
+                        <button type="submit" class="twitch-btn">
+                            {{ donation_page.donate_button_text }}
+                        </button>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}
