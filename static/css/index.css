@@ -67,7 +67,7 @@ a:hover .no-attention-fill {
     text-align: center;
 }
 
-.twitch-btn{
+.twitch-btn, .simple-btn{
     background-color: #9146FF;
     border: 1px solid #6441a5;
     border-radius: 5px;
@@ -92,8 +92,20 @@ a:hover .no-attention-fill {
     white-space: nowrap;
 }
 
+.simple-btn {
+    background-color: transparent;
+    border: 1px solid #eaeaea;
+    color: #eaeaea;
+}
+
 .twitch-btn:hover {
     background-color: #4b2e80;
+    transition: all 0.2s ease-in-out;
+}
+
+.simple-btn:hover {
+    background-color: #eaeaea;
+    color: #212121;
     transition: all 0.2s ease-in-out;
 }
 

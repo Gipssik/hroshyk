@@ -15,6 +15,7 @@ django-debug-toolbar = "^3.8.1"
 django-crispy-forms = "^2.0"
 crispy-bootstrap5 = "^0.7"
 psycopg2-binary = "^2.9.6"
+django-filter = "^23.1"
 
 [tool.poetry.dev-dependencies]
 

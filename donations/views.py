@@ -1,16 +1,23 @@
 from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import CreateView, ListView
+from django_filters.views import FilterView
 
 from accounts.models import Streamer
 from donation_page.models import DonationPage
+from donations.filters import DonationFilter
 from donations.forms import DonationForm, FullDonationForm
 from donations.models import Donation
 from donations.utils import donation_add_validation
 
 
-class DonationsView(TemplateView):
+class DonationsView(FilterView):
+    model = Donation
+    paginate_by = 100
     template_name = "donations.html"
+    context_object_name = "donations"
+    ordering = "-created_at"
+    filterset_class = DonationFilter
 
 
 class ViewerDonationPageView(CreateView):
