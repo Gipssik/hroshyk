@@ -4,9 +4,17 @@
 
 .donations-table {
     width: 100%;
-    border-collapse: collapse;
+}
+
+.donations .donations-table {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.donation-details .donations-table th {
+    text-align: right;
+    border-right: 1px solid #4b2e80;
 }
 
 .donations-table tr:nth-child(even) {
@@ -17,13 +25,23 @@
     background-color: rgba(100, 65, 165, 0.05);
 }
 
-.donations-table th {
-    padding: 10px;
+.donations .donations-table th {
     border-bottom: 1px solid #9146FF;
 }
 
+.donations-table td, .donations-table th {
+    padding: 15px;
+}
+
 .donations-table td {
-    padding: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 .donations-table tbody tr {
@@ -34,18 +52,20 @@
     border-bottom: none;
 }
 
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+
 .collapse-button {
     width: 100%;
+    position: relative;
     display: flex;
+    align-items: center;
     text-decoration: none;
     color: #ffffff;
     font-size: 20px;
     margin-bottom: 10px;
-}
-
-.collapse-button hr:first-child {
-    flex-grow: 0.05;
-    margin-right: 10px;
 }
 
 .collapse-button hr:last-child {
@@ -53,7 +73,20 @@
     margin-left: 10px;
 }
 
-.buttons{
-    display: flex;
-    gap: 10px;
+.arrow {
+    margin-right: 1.5em;
+}
+
+.arrow::before {
+    position: absolute;
+    top: .7em;
+    content: '';
+    border: .4em solid transparent;
+    border-top-color: gray;
+    transition: transform .25s;
+}
+
+.arrow.down::before {
+    transform: translateY(-0.4em) rotate(180deg);
+    transition: transform .25s;
 }

@@ -1,6 +1,6 @@
 from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, DetailView
 from django_filters.views import FilterView
 
 from accounts.models import Streamer
@@ -11,13 +11,19 @@ from donations.models import Donation
 from donations.utils import donation_add_validation
 
 
-class DonationsView(FilterView):
+class DonationsListView(FilterView):
     model = Donation
     paginate_by = 100
-    template_name = "donations.html"
+    template_name = "donations/donations.html"
     context_object_name = "donations"
     ordering = "-created_at"
     filterset_class = DonationFilter
+
+
+class DonationDetailView(DetailView):
+    model = Donation
+    template_name = "donations/donation_detail.html"
+    context_object_name = "donation"
 
 
 class ViewerDonationPageView(CreateView):

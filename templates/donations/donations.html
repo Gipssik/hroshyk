@@ -10,7 +10,7 @@
 {% block cabinet-content %}
     <div class="donations">
         <a class="collapse-button" data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="true" aria-controls="filters">
-            <hr>
+            <div class="arrow down"></div>
             <span>
                 Фільтрування
             </span>
@@ -36,7 +36,7 @@
             </thead>
             <tbody>
             {% for donation in donations %}
-                <tr>
+                <tr class="clickable-row" data-href="{% url 'donation_detail' donation.id %}">
                     <td class="nickname">{{ donation.nickname }}</td>
                     <td class="amount">{{ donation.amount }}</td>
                     <td class="message">{{ donation.message|truncatechars:30 }}</td>
@@ -45,5 +45,5 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+        {% include 'nav/pagination.html' %}
 {% endblock %}

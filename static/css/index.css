@@ -127,3 +127,30 @@ a:hover .no-attention-fill {
     border-radius: 5px;
     width: fit-content;
 }
+
+.pagination {
+    --bs-pagination-bg: transparent !important;
+    --bs-pagination-color: #eaeaea !important;
+    --bs-pagination-border-color: #6441a5 !important;
+    --bs-pagination-hover-color: #eaeaea !important;
+    --bs-pagination-hover-bg: #6441a5 !important;
+    --bs-pagination-hover-border-color: #6441a5 !important;
+    --bs-pagination-focus-color: #eaeaea !important;
+    --bs-pagination-focus-bg: #6441a5 !important;
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem #4b2e80 !important;
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: #6441a5 !important;
+    --bs-pagination-active-border-color: #6441a5 !important;
+    --bs-pagination-disabled-color: #bbbbbb !important;
+    --bs-pagination-disabled-bg: rgba(100, 65, 165, 0.8) !important;
+    --bs-pagination-disabled-border-color: #4b2e80 !important;
+}
+
+.clickable-row {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.clickable-row:hover {
+    background-color: rgba(178, 128, 255, 0.1) !important;
+}
