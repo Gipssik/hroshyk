@@ -27,6 +27,7 @@
 
 .donations .donations-table th {
     border-bottom: 1px solid #9146FF;
+    padding: 5px 15px;
 }
 
 .donations-table td, .donations-table th {

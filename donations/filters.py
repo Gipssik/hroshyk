@@ -1,4 +1,6 @@
 import django_filters
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Row, Column, HTML
 from django.forms import TextInput, NumberInput
 from django_filters.widgets import RangeWidget
 
@@ -33,3 +35,29 @@ class DonationFilter(django_filters.FilterSet):
     class Meta:
         model = Donation
         fields = ["nickname", "amount_gt", "amount_lt", "created_at"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Row(Column("nickname", "amount_gt", "amount_lt"), Column("created_at")),
+            HTML(
+                """
+                <div class="buttons">
+                    <button type="submit" class="twitch-btn">
+                        Пошук
+                    </button>
+                    <a href="{% url 'donations' %}" class="simple-btn">Скинути</a>
+                </div>
+            """
+            ),
+        )
+
+    @property
+    def form(self):
+        if hasattr(self, "_form") and not hasattr(self._form, "helper"):
+            self._form.helper = self.helper
+        form = super().form
+        if not hasattr(form, "helper"):
+            form.helper = self.helper
+        return form

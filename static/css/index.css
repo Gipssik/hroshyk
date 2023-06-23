@@ -77,7 +77,6 @@ a:hover .no-attention-fill {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid #9146FF !important;
     color: #fff !important;
-    padding: 10px 15px !important;
 }
 
 .form-control::placeholder {
@@ -155,22 +154,36 @@ a:hover .no-attention-fill {
     width: fit-content;
 }
 
-.pagination {
-    --bs-pagination-bg: transparent !important;
-    --bs-pagination-color: #eaeaea !important;
-    --bs-pagination-border-color: #6441a5 !important;
-    --bs-pagination-hover-color: #eaeaea !important;
-    --bs-pagination-hover-bg: #6441a5 !important;
-    --bs-pagination-hover-border-color: #6441a5 !important;
-    --bs-pagination-focus-color: #eaeaea !important;
-    --bs-pagination-focus-bg: #6441a5 !important;
-    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem #4b2e80 !important;
-    --bs-pagination-active-color: #fff;
-    --bs-pagination-active-bg: #6441a5 !important;
-    --bs-pagination-active-border-color: #6441a5 !important;
-    --bs-pagination-disabled-color: #bbbbbb !important;
-    --bs-pagination-disabled-bg: rgba(100, 65, 165, 0.8) !important;
-    --bs-pagination-disabled-border-color: #4b2e80 !important;
+.pagination > li > a {
+    background-color: transparent;
+    color: #eaeaea;
+    border: solid 1px #6441a5;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    color: #eaeaea;
+    background-color: #6441a5;
+    border-color: #6441a5;
+}
+
+.pagination > .active > a {
+    color: #fff;
+    background-color: #6441a5 !important;
+    border: solid 1px #6441a5 !important;
+}
+
+.pagination > .active > a:hover {
+    background-color: #5A4181 !important;
+    border: solid 1px #5A4181;
+}
+
+.pagination > .disabled > a:hover {
+    color: #bbbbbb;
+    background-color: rgba(100, 65, 165, 0.8) !important;
+    border: solid 1px #4b2e80 !important;
 }
 
 .clickable-row {
@@ -215,7 +228,7 @@ a:hover .no-attention-fill {
     transition: transform .25s;
 }
 
-.link-field-container {
+.copy-link-field-container {
     position: relative;
     display: flex;
     gap: 5px;
@@ -225,7 +238,7 @@ a:hover .no-attention-fill {
     border-radius: 5px;
 }
 
-.link-field-container .link-field-input {
+.copy-link-field-container .copy-link-field-input {
     flex: 1;
     display: flex;
     gap: 5px;
@@ -237,7 +250,7 @@ a:hover .no-attention-fill {
     letter-spacing: 0.5px;
 }
 
-.link-field-container .linkinput {
+.copy-link-field-container .linkinput {
     display: none;
 }
 

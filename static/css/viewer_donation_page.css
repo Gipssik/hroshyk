@@ -10,9 +10,11 @@
 }
 
 .donation-page-container form {
-    padding: 20px 50px;
+    padding: 20px 10px;
     width: 100%;
-    max-width: 800px;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
 }
 
 .donation-page-title-block {

@@ -1,4 +1,5 @@
 {% extends 'cabinet.html' %}
+{% load crispy_forms_tags %}
 {% load crispy_forms_filters %}
 {% load static %}
 
@@ -17,13 +18,7 @@
             <hr>
         </a>
         <form class="donations-form collapse show" method="get" id="filters">
-            {{ filter.form|crispy }}
-            <div class="buttons">
-                <button type="submit" class="twitch-btn">
-                    Пошук
-                </button>
-                <a href="{% url 'donations' %}" class="simple-btn">Скинути</a>
-            </div>
+            {% crispy filter.form %}
         </form>
         <table class="donations-table">
             <thead>

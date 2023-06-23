@@ -5,12 +5,7 @@ from donation_page.models import DonationPage
 
 
 class LinkInput(forms.TextInput):
-    template_name = "forms/link_copy_input.html"
-
-    def get_context(self, name, value, attrs):
-        context = super().get_context(name, value, attrs)
-        context["host"] = getattr(self, "host", None)
-        return context
+    template_name = "forms/copy_link_field.html"
 
 
 class DonationPageForm(ModelForm):
@@ -43,5 +38,6 @@ class DonationPageForm(ModelForm):
         widget=LinkInput(attrs={"class": "form-control"}),
         label="Посилання на сторінку",
         required=True,
+        disabled=True,
     )
     reset_current_target = forms.BooleanField(initial=False, required=False, label="Скинути зібрану суму")

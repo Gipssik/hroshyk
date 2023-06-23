@@ -15,11 +15,6 @@ class DonationPageView(AuthenticationMixin, UpdateView):
     extra_context = {"donation_form": DonationForm()}
     form_class = DonationPageForm
 
-    def get_form(self, form_class=None):
-        form: DonationForm = super().get_form(form_class)
-        form.fields["page_link"].widget.host = f"{self.request.scheme}://{self.request.get_host()}/"
-        return form
-
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         form: DonationForm = data["donation_form"]

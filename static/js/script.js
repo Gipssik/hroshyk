@@ -2,6 +2,7 @@ let collapseBtn = document.querySelector('.collapse-button');
 let arrow = document.querySelector('.arrow');
 let clickableRows = document.querySelectorAll('.clickable-row');
 let dropdownMenuOption = document.querySelectorAll(".dropdown-btn");
+let linkFieldInputs = document.querySelectorAll('.copy-link-field-input');
 
 if (collapseBtn) {
     collapseBtn.addEventListener('click', (e) => {
@@ -21,6 +22,12 @@ for (let d of dropdownMenuOption) {
     d.addEventListener("click", function() {
         this.classList.toggle("active");
         this.nextElementSibling.classList.toggle("open");
+    });
+}
+
+if (linkFieldInputs) {
+    linkFieldInputs.forEach((input) => {
+        input.innerText = `${window.location.origin}/${input.innerText.trim()}`;
     });
 }
 
