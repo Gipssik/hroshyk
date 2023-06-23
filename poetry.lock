@@ -38,6 +38,19 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "cloudinary"
+version = "1.33.0"
+description = "Python and Django SDK for Cloudinary"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+certifi = "*"
+six = "*"
+urllib3 = ">=1.26.5,<2"
+
+[[package]]
 name = "crispy-bootstrap5"
 version = "0.7"
 description = "Bootstrap5 template pack for django-crispy-forms"
@@ -68,6 +81,29 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-cleanup"
+version = "8.0.0"
+description = "Deletes old files."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django-cloudinary-storage"
+version = "0.3.0"
+description = "Django package that provides Cloudinary storages for both media and static files as well as management commands for removing unnecessary files."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+cloudinary = ">=1.4.0"
+requests = ">=2.10.0"
+
+[package.extras]
+video = ["python-magic (>=0.4.12)"]
 
 [[package]]
 name = "django-crispy-forms"
@@ -133,6 +169,18 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "pillow"
+version = "9.5.0"
+description = "Python Imaging Library (Fork)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-removed-in", "sphinxext-opengraph"]
+tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
+
+[[package]]
 name = "psycopg2-binary"
 version = "2.9.6"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
@@ -157,6 +205,14 @@ urllib3 = ">=1.21.1,<1.27"
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "sqlparse"
@@ -190,23 +246,28 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "db1fbf160c483c520dd4dacf534abd5f42c808dea2387869bc41ad6eb9e0ba0b"
+content-hash = "a0db2eda108628dea914f1bf6d171f2f70da66c7f0e7bb33dd63383a45ac32e0"
 
 [metadata.files]
 asgiref = []
 bcrypt = []
 certifi = []
 charset-normalizer = []
+cloudinary = []
 crispy-bootstrap5 = []
 django = []
+django-cleanup = []
+django-cloudinary-storage = []
 django-crispy-forms = []
 django-debug-toolbar = []
 django-environ = []
 django-filter = []
 django-twitch-auth = []
 idna = []
+pillow = []
 psycopg2-binary = []
 requests = []
+six = []
 sqlparse = []
 tzdata = []
 urllib3 = []

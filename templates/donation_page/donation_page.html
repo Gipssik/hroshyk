@@ -17,6 +17,7 @@
 			{% csrf_token %}
 			<div class="submit-btn">
 				<button type="submit" class="twitch-btn">Зберегти</button>
+				<a class="simple-btn go-to-preview-btn" href="#preview-container">Перегляд</a>
 			</div>
 			{{ form|crispy }}
 			<div class="submit-btn">
@@ -24,7 +25,7 @@
 			</div>
 		</form>
 		<div class="vr"></div>
-		<div class="preview-container">
+		<div class="preview-container" id="preview-container">
 			<h2>Попередній перегляд</h2>
 			<div class="preview">
 				{% include 'donation_page/viewer_donation_page.html' with donation_page=object form=donation_form %}

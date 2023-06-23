@@ -4,7 +4,7 @@
 
 {% block extra_head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/donations.css' %}">
+    <link rel="stylesheet" href="{% static 'css/donation.css' %}">
 {% endblock %}
 
 {% block cabinet-content %}
@@ -35,14 +35,20 @@
             </tr>
             </thead>
             <tbody>
-            {% for donation in donations %}
-                <tr class="clickable-row" data-href="{% url 'donation_detail' donation.id %}">
-                    <td class="nickname">{{ donation.nickname }}</td>
-                    <td class="amount">{{ donation.amount }}</td>
-                    <td class="message">{{ donation.message|truncatechars:30 }}</td>
-                    <td class="created-at">{{ donation.created_at|date:'d.m.Y H:i' }}</td>
+            {% if donations %}
+                {% for donation in donations %}
+                    <tr class="clickable-row" data-href="{% url 'donation_detail' donation.id %}">
+                        <td class="nickname">{{ donation.nickname }}</td>
+                        <td class="amount">{{ donation.amount }}</td>
+                        <td class="message">{{ donation.message|truncatechars:30 }}</td>
+                        <td class="created-at">{{ donation.created_at|date:'d.m.Y H:i' }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">Ви бомжик, у вас немає грошиків.</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
         {% include 'nav/pagination.html' %}

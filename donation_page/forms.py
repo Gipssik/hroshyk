@@ -4,6 +4,15 @@ from django.forms import ModelForm
 from donation_page.models import DonationPage
 
 
+class LinkInput(forms.TextInput):
+    template_name = "forms/link_copy_input.html"
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        context["host"] = getattr(self, "host", None)
+        return context
+
+
 class DonationPageForm(ModelForm):
     class Meta:
         model = DonationPage
@@ -30,4 +39,9 @@ class DonationPageForm(ModelForm):
             "reset_current_target",
         ]
 
+    page_link = forms.CharField(
+        widget=LinkInput(attrs={"class": "form-control"}),
+        label="Посилання на сторінку",
+        required=True,
+    )
     reset_current_target = forms.BooleanField(initial=False, required=False, label="Скинути зібрану суму")

@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from donation_page.models import DonationPage, Widget
+from donation_page.models import DonationPage
 
 admin.site.register(DonationPage)
-admin.site.register(Widget)

@@ -1,36 +1,11 @@
-import enum
-
 from django.db import models
 from django.urls import reverse
-
-
-class ChoicesEnum(enum.Enum):
-    @classmethod
-    def choices(cls):
-        return tuple((i.name, i.value) for i in cls)
-
-
-class Ranking(ChoicesEnum):
-    TOP = "TOP"
-    LAST = "LAST"
-
-
-class Widget(models.Model):
-    title = models.CharField(max_length=255, default="Віджет")
-    amount_of_ranks = models.IntegerField(default=5, null=True, blank=True)
-    ranking_type = models.CharField(
-        max_length=64,
-        choices=Ranking.choices(),
-        default=Ranking.TOP.name,
-        null=True,
-        blank=True,
-    )
 
 
 class DonationPage(models.Model):
     viewer_pays_commision = models.BooleanField(default=True, verbose_name="Глядач платить комісію")
     commision_percent = models.FloatField(default=0.5, verbose_name="Комісія від суми")
-    page_link = models.CharField(max_length=255, verbose_name="Посилання на сторінку")
+    page_link = models.CharField(max_length=255, unique=True, verbose_name="Посилання на сторінку")
     page_title = models.CharField(max_length=255, default="Скинути Грошик", verbose_name="Заголовок сторінки")
     page_meta = models.CharField(max_length=512, null=True, blank=True, verbose_name="Мета теги сторінки")
     title = models.CharField(max_length=255, default="Скинути Грошик Стрімеру", verbose_name="Заголовок привітання")
@@ -57,14 +32,6 @@ class DonationPage(models.Model):
     target_title = models.CharField(max_length=255, default="На хаймарс", verbose_name="Заголовок цілі")
     target_amount = models.IntegerField(default=10000, verbose_name="Сума цілі")
     target_current_amount = models.IntegerField(default=0, verbose_name="Зібрано грошей")
-
-    widgets = models.ManyToManyField(
-        Widget,
-        related_name="donation_pages",
-        verbose_name="Віджети",
-        null=True,
-        blank=True,
-    )
 
     def get_absolute_url(self):
         return reverse("donation_page")

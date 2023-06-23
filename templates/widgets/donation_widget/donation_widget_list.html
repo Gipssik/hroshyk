@@ -1,0 +1,71 @@
+{% extends 'cabinet.html' %}
+{% load static %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/widget.css' %}">
+{% endblock %}
+
+{% block cabinet-content %}
+    <div class="widgets-container">
+        <h1>Віджети подяк</h1>
+        <div class="widget-block">
+            {% for donation_widget in donation_widgets %}
+                <div class="widget-unit">
+                    <a class="widget-unit-header" href="{% url 'donation_widgets_update' donation_widget.pk %}">{{ donation_widget.name }}</a>
+                    <div class="donation-widget-configs">
+                        {% for config in donation_widget.configs.all %}
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                            <div class="donation-widget-config">
+                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
+                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,3 +1,29 @@
+* {
+    font-family: 'Mulish', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(62, 30, 108, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6441a5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9146FF;
+}
+
+::selection {
+  color: #ffffff;
+  background: #b478ff;
+}
+
 body {
     background-color: #212121 !important;
     color: #fff !important;
@@ -112,6 +138,7 @@ a:hover .no-attention-fill {
 .submit-btn {
     width: 100%;
     display: flex;
+    gap: 5px;
     justify-content: center;
     margin: 35px 0;
 }
@@ -154,3 +181,63 @@ a:hover .no-attention-fill {
 .clickable-row:hover {
     background-color: rgba(178, 128, 255, 0.1) !important;
 }
+
+.collapse-button {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.collapse-button hr:last-child {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.arrow {
+    margin-right: 1.5em;
+}
+
+.arrow::before {
+    position: absolute;
+    top: .7em;
+    content: '';
+    border: .4em solid transparent;
+    border-top-color: gray;
+    transition: transform .25s;
+}
+
+.arrow.down::before {
+    transform: translateY(-0.4em) rotate(180deg);
+    transition: transform .25s;
+}
+
+.link-field-container {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background: rgba(119, 81, 196, 0.5);
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.link-field-container .link-field-input {
+    flex: 1;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 7px 10px;
+    border: 1px solid #9146FF;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.5px;
+}
+
+.link-field-container .linkinput {
+    display: none;
+}
+

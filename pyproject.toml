@@ -16,6 +16,9 @@ django-crispy-forms = "^2.0"
 crispy-bootstrap5 = "^0.7"
 psycopg2-binary = "^2.9.6"
 django-filter = "^23.1"
+django-cloudinary-storage = "^0.3.0"
+Pillow = "^9.5.0"
+django-cleanup = "^8.0.0"
 
 [tool.poetry.dev-dependencies]
 

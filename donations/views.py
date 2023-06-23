@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DetailView
 from django_filters.views import FilterView
 
+from accounts.auth import AuthenticationMixin
 from accounts.models import Streamer
 from donation_page.models import DonationPage
 from donations.filters import DonationFilter
@@ -11,16 +12,16 @@ from donations.models import Donation
 from donations.utils import donation_add_validation
 
 
-class DonationsListView(FilterView):
+class DonationsListView(AuthenticationMixin, FilterView):
     model = Donation
     paginate_by = 100
-    template_name = "donations/donations.html"
+    template_name = "donations/donation_list.html"
     context_object_name = "donations"
     ordering = "-created_at"
     filterset_class = DonationFilter
 
 
-class DonationDetailView(DetailView):
+class DonationDetailView(AuthenticationMixin, DetailView):
     model = Donation
     template_name = "donations/donation_detail.html"
     context_object_name = "donation"
@@ -48,7 +49,9 @@ class ViewerDonationPageView(CreateView):
         form = FullDonationForm(**self.get_form_kwargs())
         result = self.form_valid(form) if form.is_valid() else self.form_invalid(form)
         if result.status_code < 400:
+            self.object.streamer.balance += self.object.amount
             self.object.streamer.donation_page.target_current_amount += self.object.amount
+            self.object.streamer.save()
             self.object.streamer.donation_page.save()
         return result
 

@@ -1,0 +1,7 @@
+<div class="link-field-container">
+    <span class="link-field-input" id="{{ widget.attrs.id }}-link">
+        {{ host }}{{ widget.value|stringformat:'s' }}/
+    </span>
+    {% include "django/forms/widgets/text.html" %}
+    <div class="simple-btn" onclick="copyLinkToClipboard('{{ widget.attrs.id }}-link')">Копіювати</div>
+</div>

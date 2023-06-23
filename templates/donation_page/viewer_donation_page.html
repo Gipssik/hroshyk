@@ -4,8 +4,13 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block title %}
+    {{ donation_page.page_title }}
+{% endblock %}
+
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/viewer_donation_page.css' %}">
+    <meta name="description" content="{{ donation_page.page_meta }}">
 {% endblock %}
 
 {% block content %}
@@ -48,4 +53,8 @@
             </form>
         </div>
     </div>
+
+    {% if is_preview == True %}
+        {% block extra_js %}{% endblock %}
+    {% endif %}
 {% endblock %}
