@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "donation_page.apps.DonationPageConfig",
     "donations.apps.DonationsConfig",
     "widgets.apps.WidgetsConfig",
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -125,9 +126,21 @@ AUTHENTICATION_BACKENDS = [
     "accounts.auth.TwitchBackend",
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_title": "Hroshyk",
+    "user_avatar": "profile_image_url",
+    "site_header": "Hroshyk",
+    "site_brand": "Hroshyk",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+}
+
 AUTH_USER_MODEL = "accounts.Streamer"
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_URL = "django_twitch_auth_authorize"
+LOGIN_REDIRECT_URL = "donations"
 
 TWITCH_CLIENT_ID = env("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = env("TWITCH_CLIENT_SECRET")

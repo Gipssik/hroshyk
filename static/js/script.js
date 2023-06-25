@@ -3,6 +3,7 @@ let arrow = document.querySelector('.arrow');
 let clickableRows = document.querySelectorAll('.clickable-row');
 let dropdownMenuOption = document.querySelectorAll(".dropdown-btn");
 let linkFieldInputs = document.querySelectorAll('.copy-link-field-input');
+let widgetInfoCopyLinkBtns = document.querySelectorAll('.widget-info .simple-btn');
 
 if (collapseBtn) {
     collapseBtn.addEventListener('click', (e) => {
@@ -31,7 +32,17 @@ if (linkFieldInputs) {
     });
 }
 
-const copyLinkToClipboard = (id) => {
+if (widgetInfoCopyLinkBtns) {
+    widgetInfoCopyLinkBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let {token} = btn.dataset;
+            copyWidgetLinkToClipboardFromButton(btn, token);
+        });
+    });
+}
+
+const copyLinkFieldToClipboard = (id) => {
     let copyText = document.getElementById(id);
     let range = document.createRange();
     range.selectNode(copyText);
@@ -40,9 +51,22 @@ const copyLinkToClipboard = (id) => {
     navigator.clipboard.writeText(copyText.innerText);
     let btn = copyText.parentElement.parentElement.querySelector('.simple-btn');
     btn.style.maxWidth = `${btn.offsetWidth}px`;
+    let btnHtml = btn.innerHTML;
     btn.innerText = 'Скопійовано!';
     setTimeout(() => {
         btn.style.maxWidth = 'initial';
-        btn.innerText = 'Копіювати';
+        btn.innerHTML = btnHtml;
+    }, 3000);
+}
+
+const copyWidgetLinkToClipboardFromButton = (btn, token) => {
+    let copyText = `${window.location.origin}/user-widgets/${token}`;
+    navigator.clipboard.writeText(copyText);
+    btn.style.maxWidth = `${btn.offsetWidth}px`;
+    let btnHtml = btn.innerHTML;
+    btn.innerText = 'Скопійовано!';
+    setTimeout(() => {
+        btn.style.maxWidth = 'initial';
+        btn.innerHTML = btnHtml;
     }, 3000);
 }

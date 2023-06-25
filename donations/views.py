@@ -1,9 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DetailView
 from django_filters.views import FilterView
 
-from accounts.auth import AuthenticationMixin
 from accounts.models import Streamer
 from donation_page.models import DonationPage
 from donations.filters import DonationFilter
@@ -12,7 +12,7 @@ from donations.models import Donation
 from donations.utils import donation_add_validation
 
 
-class DonationsListView(AuthenticationMixin, FilterView):
+class DonationsListView(LoginRequiredMixin, FilterView):
     model = Donation
     paginate_by = 2
     template_name = "donations/donation_list.html"
@@ -21,7 +21,7 @@ class DonationsListView(AuthenticationMixin, FilterView):
     filterset_class = DonationFilter
 
 
-class DonationDetailView(AuthenticationMixin, DetailView):
+class DonationDetailView(LoginRequiredMixin, DetailView):
     model = Donation
     template_name = "donations/donation_detail.html"
     context_object_name = "donation"

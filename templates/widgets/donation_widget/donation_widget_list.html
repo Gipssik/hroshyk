@@ -11,58 +11,44 @@
         <h1>Віджети подяк</h1>
         <div class="widget-block">
             {% for donation_widget in donation_widgets %}
-                <div class="widget-unit">
-                    <a class="widget-unit-header" href="{% url 'donation_widgets_update' donation_widget.pk %}">{{ donation_widget.name }}</a>
-                    <div class="donation-widget-configs">
-                        {% for config in donation_widget.configs.all %}
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                            <div class="donation-widget-config">
-                                <a href="{% url 'donation_widgets_config_update' config.pk %}">
-                                    Віджет для {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </a>
-                            </div>
-                        {% endfor %}
+                <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
+                    <div class="widget-info">
+                        <h2>{{ donation_widget.name|truncatechars:20 }}</h2>
+                        <div class="simple-btn" data-token="{{ donation_widget.link_identifier }}">
+                            <i class="bi bi-files"></i>Посилання
+                        </div>
                     </div>
-                </div>
+                    <span>Віджети налаштовано для діапазонів:</span>
+                    <div class="widget-configs-ranges-container">
+                        <div class="widget-configs-ranges">
+                        {% if donation_widget.configs.all %}
+                            {% for config in donation_widget.configs.all %}
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                                <div class="widget-config-range">
+                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="widget-config-range">Ні для яких діапазонів, бо треба створити</div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </a>
+
             {% endfor %}
 
         </div>

@@ -1,15 +1,15 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.views.generic import UpdateView
 
-from accounts.auth import AuthenticationMixin
 from donation_page.forms import DonationPageForm
 from donation_page.models import DonationPage
 from donations.forms import DonationForm
 from donations.utils import donation_add_validation
 
 
-class DonationPageView(AuthenticationMixin, UpdateView):
+class DonationPageView(LoginRequiredMixin, UpdateView):
     model = DonationPage
     template_name = "donation_page/donation_page.html"
     extra_context = {"donation_form": DonationForm()}

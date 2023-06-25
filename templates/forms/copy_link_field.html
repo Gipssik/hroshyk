@@ -3,5 +3,7 @@
         {{ widget.value|stringformat:'s' }}/
     </span>
     {% include "django/forms/widgets/text.html" %}
-    <div class="simple-btn" onclick="copyLinkToClipboard('{{ widget.attrs.id }}-link')">Копіювати</div>
+    <div class="simple-btn" onclick="copyLinkFieldToClipboard('{{ widget.attrs.id }}-link')">
+        <i class="bi bi-files"></i>Копіювати
+    </div>
 </div>

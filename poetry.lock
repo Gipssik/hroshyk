@@ -153,6 +153,17 @@ python-versions = ">=3.7"
 Django = ">=3.2"
 
 [[package]]
+name = "django-jazzmin"
+version = "2.6.0"
+description = "Drop-in theme for django admin, that utilises AdminLTE 3 & Bootstrap 4 to make yo' admin look jazzy"
+category = "main"
+optional = false
+python-versions = ">=3.6.2"
+
+[package.dependencies]
+django = ">=2.2"
+
+[[package]]
 name = "django-twitch-auth"
 version = "0.1.0"
 description = "Django Authetication with Twitch."
@@ -246,7 +257,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "a0db2eda108628dea914f1bf6d171f2f70da66c7f0e7bb33dd63383a45ac32e0"
+content-hash = "dd9a3423c3bdf4a3aef8f92e8b664a31fae070cd45563ca2c1abc578c0df4709"
 
 [metadata.files]
 asgiref = []
@@ -262,6 +273,7 @@ django-crispy-forms = []
 django-debug-toolbar = []
 django-environ = []
 django-filter = []
+django-jazzmin = []
 django-twitch-auth = []
 idna = []
 pillow = []

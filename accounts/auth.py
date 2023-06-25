@@ -1,8 +1,5 @@
-import secrets
-
 import requests
 from django.contrib.auth import get_user_model
-from django.shortcuts import redirect
 from django_twitch_auth.authbackends import TwitchBackend as BaseTwitchBackend
 from django_twitch_auth.settings import TWITCH_USERS_URL, TWITCH_CLIENT_ID, TWITCH_USERNAME_FIELD, TWITCH_EMAIL_FIELD
 
@@ -42,8 +39,3 @@ class TwitchBackend(BaseTwitchBackend):
                 user = User.objects.create_user(**user_data)
             return user
         return None
-
-
-class AuthenticationMixin:
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs) if request.user.is_authenticated else redirect("home")
