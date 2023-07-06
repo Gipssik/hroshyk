@@ -1,6 +1,10 @@
 <div class="copy-link-field-container">
-    <span class="copy-link-field-input" id="{{ widget.attrs.id }}-link">
-        {{ widget.value|stringformat:'s' }}/
+    <span class="copy-link-field-input" id="{{ widget.attrs.id }}-link" data-value="{{ widget.mutated_value|stringformat:'s' }}">
+        {% if widget.attrs.secret %}
+            /{% for _ in widget.mutated_value|truncatechars:30 %}*{% endfor %}
+        {% else %}
+            {{ widget.mutated_value|stringformat:'s' }}
+        {% endif %}
     </span>
     {% include "django/forms/widgets/text.html" %}
     <div class="simple-btn" onclick="copyLinkFieldToClipboard('{{ widget.attrs.id }}-link')">

@@ -1,11 +1,20 @@
 from django import forms
 from django.forms import ModelForm
+from django.urls import reverse
 
 from donation_page.models import DonationPage
 
 
 class LinkInput(forms.TextInput):
     template_name = "forms/copy_link_field.html"
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        context["widget"]["mutated_value"] = reverse(
+            self.attrs["url_for"],
+            kwargs={self.attrs["url_kwarg"]: context["widget"]["value"]},
+        )
+        return context
 
 
 class DonationPageForm(ModelForm):
@@ -35,7 +44,13 @@ class DonationPageForm(ModelForm):
         ]
 
     page_link = forms.CharField(
-        widget=LinkInput(attrs={"class": "form-control"}),
+        widget=LinkInput(
+            attrs={
+                "class": "form-control",
+                "url_for": "viewer_donation_page",
+                "url_kwarg": "link",
+            }
+        ),
         label="Посилання на сторінку",
         required=True,
         disabled=True,

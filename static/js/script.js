@@ -28,7 +28,7 @@ for (let d of dropdownMenuOption) {
 
 if (linkFieldInputs) {
     linkFieldInputs.forEach((input) => {
-        input.innerText = `${window.location.origin}/${input.innerText.trim()}`;
+        input.innerText = `${window.location.origin}${input.innerText.trim()}`;
     });
 }
 
@@ -48,7 +48,7 @@ const copyLinkFieldToClipboard = (id) => {
     range.selectNode(copyText);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
-    navigator.clipboard.writeText(copyText.innerText);
+    navigator.clipboard.writeText(window.location.origin + copyText.dataset.value);
     let btn = copyText.parentElement.parentElement.querySelector('.simple-btn');
     btn.style.maxWidth = `${btn.offsetWidth}px`;
     let btnHtml = btn.innerHTML;
