@@ -55,6 +55,7 @@ class DonationFilter(django_filters.FilterSet):
 
     @property
     def form(self):
+        self.helper.disable_csrf = self.request.method == "GET"
         if hasattr(self, "_form") and not hasattr(self._form, "helper"):
             self._form.helper = self.helper
         form = super().form

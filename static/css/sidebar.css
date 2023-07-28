@@ -52,6 +52,10 @@
     display: block;
 }
 
+.current {
+    background-color: #67459d !important;
+}
+
 .dropdown-container a {
     padding: 10px 30px !important;
 }

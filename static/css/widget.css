@@ -1,4 +1,7 @@
-.widgets-container {
+.widgets-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .widget-block {

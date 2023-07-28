@@ -8,7 +8,14 @@
 
 {% block cabinet-content %}
     <div class="widgets-container">
-        <h1>Віджети подяк</h1>
+        <div class="widgets-header">
+            <h1>Віджети подяк</h1>
+            <a class="simple-btn" href="{% url 'donation_widgets_create' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </a>
+        </div>
         <div class="widget-block">
             {% for donation_widget in donation_widgets %}
                 <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
@@ -21,20 +28,24 @@
                     <span>Віджети налаштовано для діапазонів:</span>
                     <div class="widget-configs-ranges-container">
                         <div class="widget-configs-ranges">
-                        {% if donation_widget.configs.all %}
-                            {% for config in donation_widget.configs.all %}
-                                <div class="widget-config-range">
-                                    {{ config.min_amount }} - {{ config.max_amount }} грн
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="widget-config-range">Ні для яких діапазонів, бо треба створити</div>
-                        {% endif %}
+                            {% if donation_widget.configs.all %}
+                                {% for config in donation_widget.configs.all %}
+                                    <div class="widget-config-range">
+                                        {{ config.min_amount }} - {{ config.max_amount }} грн
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="widget-config-range">Ні для яких діапазонів, бо треба створити</div>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
 
             {% endfor %}
+
+            {% if not donation_widgets %}
+
+            {% endif %}
 
         </div>
     </div>

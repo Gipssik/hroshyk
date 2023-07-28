@@ -2,6 +2,7 @@ let collapseBtn = document.querySelector('.collapse-button');
 let arrow = document.querySelector('.arrow');
 let clickableRows = document.querySelectorAll('.clickable-row');
 let dropdownMenuOption = document.querySelectorAll(".dropdown-btn");
+let sidebarItems = document.querySelectorAll('.sidebar-top a:not(.logo)');
 let linkFieldInputs = document.querySelectorAll('.copy-link-field-input');
 let widgetInfoCopyLinkBtns = document.querySelectorAll('.widget-info .simple-btn');
 
@@ -19,10 +20,26 @@ if (clickableRows) {
     });
 }
 
-for (let d of dropdownMenuOption) {
-    d.addEventListener("click", function() {
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("open");
+if (dropdownMenuOption) {
+    dropdownMenuOption.forEach((option) => {
+        option.addEventListener("click", function() {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("open");
+        });
+    });
+}
+
+if (sidebarItems) {
+    sidebarItems.forEach((item) => {
+        if (window.location.href !== item.href.split('#')[0]){
+            return;
+        }
+        item.classList.toggle('current');
+        let dropdownBtn = item.parentElement.previousElementSibling;
+        if (dropdownBtn && dropdownBtn.classList.contains('dropdown-btn')){
+            dropdownBtn.classList.toggle('active');
+            item.parentElement.classList.toggle('open');
+        }
     });
 }
 
