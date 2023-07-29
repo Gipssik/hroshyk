@@ -13,11 +13,16 @@
 {% endblock %}
 
 {% block content %}
-	{% block sidebar %}
-		{% include 'nav/sidebar.html' %}
-	{% endblock %}
-	<main>
+    {% block sidebar %}
+        {% include 'nav/sidebar.html' %}
+    {% endblock %}
+    <main>
         <img class="htmx-indicator" src="{% static 'img/oval.svg' %}" alt="loader">
-		{% block cabinet-content %}{% endblock %}
-	</main>
+        {% block cabinet-content %}{% endblock %}
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'js/donationPage.js' %}" defer></script>
 {% endblock %}

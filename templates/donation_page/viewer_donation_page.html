@@ -31,7 +31,7 @@
                     <div class="progress-bar-container">
                         <div
                                 class="progress-bar"
-                                style="width: {{ donation_page.target_current_amount|percentage:donation_page.target_amount }}%;"
+                                style="width: {{ donation_page.target_current_amount|float_percentage:donation_page.target_amount|stringformat:".1f" }}%;"
                         >
                         </div>
                         <span class="progress-bar-min">0</span>
