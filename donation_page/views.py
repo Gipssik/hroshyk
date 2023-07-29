@@ -31,6 +31,13 @@ class DonationPageView(LoginRequiredMixin, UpdateView):
             raise Http404("Сторінка не знайдена")
         return self.request.user.donation_page
 
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "donation_page/donation_page_content.html"
+        else:
+            self.template_name = "donation_page/donation_page.html"
+        return super().get(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         result = super().post(request, *args, **kwargs)
         reset_current_target = request.POST.get("reset_current_target") == "on"

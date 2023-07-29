@@ -13,6 +13,13 @@ class DonationWidgetListView(LoginRequiredMixin, ListView):
     paginate_by = 50
     ordering = ["id"]
 
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_list_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_list.html"
+        return super().get(request, *args, **kwargs)
+
 
 class DonationWidgetCreateView(LoginRequiredMixin, FormView):
     template_name = "widgets/donation_widget/donation_widget_create.html"

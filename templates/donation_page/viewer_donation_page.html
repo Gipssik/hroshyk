@@ -5,13 +5,18 @@
 {% load static %}
 
 {% block title %}
-    {{ donation_page.page_title }}
+    {% if is_preview == False %}
+        {{ donation_page.page_title }}
+    {% else %}
+        Грошик - Кабінет
+    {% endif %}
 {% endblock %}
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/viewer_donation_page.css' %}">
     <meta name="description" content="{{ donation_page.page_meta }}">
 {% endblock %}
+
 
 {% block content %}
     <div class="donation-page-container">

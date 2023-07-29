@@ -1,50 +1,5 @@
 {% extends 'cabinet.html' %}
-{% load crispy_forms_tags %}
-{% load crispy_forms_filters %}
-{% load static %}
-
-{% block extra_head %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/donation.css' %}">
-{% endblock %}
 
 {% block cabinet-content %}
-    <div class="donations">
-        <a class="collapse-button" data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="true" aria-controls="filters">
-            <div class="arrow down"></div>
-            <span>
-                Фільтрування
-            </span>
-            <hr>
-        </a>
-        <form class="donations-form collapse show" method="GET" id="filters">
-            {% crispy filter.form %}
-        </form>
-        <table class="donations-table">
-            <thead>
-            <tr>
-                <th class="nickname">Нікнейм</th>
-                <th class="amount">Сума</th>
-                <th class="message">Повідомлення</th>
-                <th class="created-at">Дата</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if donations %}
-                {% for donation in donations %}
-                    <tr class="clickable-row" data-href="{% url 'donation_detail' donation.id %}">
-                        <td class="nickname">{{ donation.nickname }}</td>
-                        <td class="amount">{{ donation.amount }}</td>
-                        <td class="message">{{ donation.message|truncatechars:30 }}</td>
-                        <td class="created-at">{{ donation.created_at|date:'d.m.Y H:i' }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="4">Ви бомжик, у вас немає грошиків.</td>
-                </tr>
-            {% endif %}
-            </tbody>
-        </table>
-        {% include 'nav/pagination.html' %}
+	{% include 'donations/donation_list_content.html' %}
 {% endblock %}
