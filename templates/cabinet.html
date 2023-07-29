@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/donation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/donation_page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/widget.css' %}">
+{% endblock %}
+
+{% block title %}
+    Грошик - Кабінет
+{% endblock %}
+
+{% block content %}
+    {% block sidebar %}
+        {% include 'nav/sidebar.html' %}
+    {% endblock %}
+    <main>
+        <img class="htmx-indicator" src="{% static 'img/oval.svg' %}" alt="loader">
+        {% block cabinet-content %}{% endblock %}
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'js/donationPage.js' %}" defer></script>
+{% endblock %}

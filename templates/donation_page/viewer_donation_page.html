@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load donation_page_filters %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    {% if is_preview == False %}
+        {{ donation_page.page_title }}
+    {% else %}
+        Грошик - Кабінет
+    {% endif %}
+{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/viewer_donation_page.css' %}">
+    <meta name="description" content="{{ donation_page.page_meta }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="donation-page-container">
+        <div class="donation-page-title-block">
+            <h1>{{ donation_page.title }}</h1>
+            <p>{{ donation_page.title_subtext }}</p>
+        </div>
+        <div class="donation-page-form-container container">
+            <form action="#" method="post">
+                <div class="donation-page-progress-bar">
+                    <h5>{{ donation_page.target_title }}</h5>
+                    <div class="progress-bar-container">
+                        <div
+                                class="progress-bar"
+                                style="width: {{ donation_page.target_current_amount|float_percentage:donation_page.target_amount|stringformat:".1f" }}%;"
+                        >
+                        </div>
+                        <span class="progress-bar-min">0</span>
+                        <span class="progress-bar-current">
+                        {{ donation_page.target_current_amount }} грн
+                        ({{ donation_page.target_current_amount|float_percentage:donation_page.target_amount|stringformat:".1f" }}%)
+                    </span>
+                        <span class="progress-bar-target">{{ donation_page.target_amount }}</span>
+                    </div>
+                </div>
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
+        </div>
+    </div>
+
+    {% if is_preview == True %}
+        {% block extra_js %}{% endblock %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,79 @@
+.donation-page-container, .donation-page-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.donation-page-form-container {
+    overflow-x: hidden;
+}
+
+.donation-page-container form {
+    padding: 20px 10px;
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+}
+
+.donation-page-title-block {
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+    background: rgb(75,46,128);
+    background: linear-gradient(90deg, rgba(75,46,128,1) 0%, rgba(100,65,165,1) 50%, rgba(75,46,128,1) 100%);
+}
+
+.donation-page-title-block h1 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.donation-page-title-block p {
+    font-style: italic;
+}
+
+.donation-page-progress-bar {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-bar-container {
+    height: 40px;
+    width: 100%;
+    border: 2px solid #4b2e80;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    height: 100%;
+    background: rgb(75,46,128);
+    background: linear-gradient(90deg, rgba(75,46,128,1) 0%, rgba(145,70,255,1) 100%);
+    position: absolute;
+}
+
+.progress-bar-container .progress-bar-current,
+.progress-bar-container .progress-bar-min,
+.progress-bar-container .progress-bar-target {
+    position: relative;
+    font-weight: bold;
+}
+
+.progress-bar-container .progress-bar-current {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.progress-bar-container .progress-bar-min {
+    left: 10px;
+    position: absolute;
+}
+
+.progress-bar-container .progress-bar-target {
+    right: 10px;
+    position: absolute;
+}

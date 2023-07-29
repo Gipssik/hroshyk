@@ -1,0 +1,63 @@
+.donations {
+    width: 100%;
+}
+
+.donations-table {
+    width: 100%;
+}
+
+.donations .donations-table {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.donation-details .donations-table th {
+    text-align: right;
+    border-right: 1px solid #4b2e80;
+}
+
+.donations-table tr:nth-child(even) {
+    background-color: rgba(145, 70, 255, 0.1);
+}
+
+.donations-table tr:nth-child(odd) {
+    background-color: rgba(100, 65, 165, 0.05);
+}
+
+.donations .donations-table th {
+    border-bottom: 1px solid #9146FF;
+    padding: 5px 15px;
+}
+
+.donations .donations-table td {
+    padding: 10px 15px;
+}
+
+.donations-table td, .donations-table th {
+    padding: 15px;
+}
+
+.donations-table td {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.donations-table tbody tr {
+    border-bottom: 1px solid #4b2e80;
+}
+
+.donations-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,24 @@
+{% extends 'cabinet.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/widget.css' %}">
+{% endblock %}
+
+{% block cabinet-content %}
+    <form method="post" enctype="multipart/form-data">
+        <h4>Створення віджета</h4>
+        {% csrf_token %}
+        {{ form|crispy }}
+        {{ formset.management_form }}
+        <h4>Конфігурація для віджета</h4>
+        {% for form in formset %}
+            {{ form|crispy }}
+        {% endfor %}
+        <button class="twitch-btn" type="submit">Створити</button>
+    </form>
+{% endblock %}
+

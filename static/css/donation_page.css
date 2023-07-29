@@ -1,0 +1,44 @@
+.form-with-preview {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-with-preview form {
+    flex: 0.3;
+}
+
+.preview-container {
+    flex: 0.65;
+    overflow-x: hidden;
+}
+
+.preview {
+    border: 1px solid #6441a5;
+    height: fit-content;
+}
+
+.go-to-preview-btn {
+    display: none !important;
+}
+
+@media screen and (max-width: 1300px) {
+    .form-with-preview {
+        flex-direction: column;
+    }
+
+    .form-with-preview .vr {
+        display: none;
+    }
+
+    .form-with-preview form {
+        flex: 1;
+    }
+
+    .preview-container {
+        flex: 1;
+    }
+
+    .go-to-preview-btn {
+        display: block !important;
+    }
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock %}
+
+{% block nav %}
+	{% include 'nav/header.html' %}
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<div style="width: 100%; height: 70vh; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+			<h5 class="fs-3 card-title">Welcome {{ user.username }}</h5>
+			<p class="fs-4 card-text">You are logged in.</p>
+		</div>
+	{% endif %}
+{% endblock content %}
