@@ -1,4 +1,4 @@
-<div hx-get="{% url 'donations' %}?{{ request.GET.urlencode }}" hx-trigger="every 5s">
+<div hx-boost="true" hx-get="{% url 'donations' %}" hx-trigger="every 30s" hx-swap="outerHTML">
     <table class="donations-table">
         <thead>
         <tr>
@@ -11,7 +11,9 @@
         <tbody>
         {% if donations %}
             {% for donation in donations %}
-                <tr class="clickable-row" data-href="{% url 'donation_detail' donation.id %}">
+                <tr class="clickable-row" hx-get="{% url 'donation_detail' donation.id %}"
+                    hx-target="main" hx-swap="innerHTML" hx-push-url="true"
+                >
                     <td class="nickname">{{ donation.nickname }}</td>
                     <td class="amount">{{ donation.amount }}</td>
                     <td class="message">{{ donation.message|truncatechars:30 }}</td>
@@ -20,7 +22,11 @@
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="4">Ви бомжик, у вас немає грошиків.</td>
+                {% if request.GET.urlencode %}
+                    <td colspan="4">Ніц не знайшли.</td>
+                {% else %}
+                    <td colspan="4">Ви бомжик, у вас немає грошиків.</td>
+                {% endif %}
             </tr>
         {% endif %}
         </tbody>

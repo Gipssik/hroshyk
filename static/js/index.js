@@ -9,18 +9,6 @@ const addToggleCollapseBtnEvent = () => {
     })
 }
 
-const addClickEventToClickableRows = () => {
-    const clickableRows = document.querySelectorAll('.clickable-row')
-    if (!clickableRows) {
-        return
-    }
-    clickableRows.forEach((row) => {
-        row.addEventListener('click', (e) => {
-            window.location = row.dataset.href
-        })
-    })
-}
-
 const addClickEventToDropdownMenuOptions = () => {
     const dropdownMenuOption = document.querySelectorAll('.dropdown-btn')
     if (!dropdownMenuOption) {
@@ -110,21 +98,14 @@ const copyWidgetLinkToClipboardFromButton = (btn, token) => {
     }, 3000)
 }
 
-
-document.addEventListener('htmx:afterSettle', () => {
-    addClickEventToClickableRows()
-})
-
 document.addEventListener('htmx:pushedIntoHistory', (event) => {
     addToggleCollapseBtnEvent()
-    addClickEventToClickableRows()
     highlightCurrentSidebarItem()
     updateLinkFieldInputs()
     addClickEventToCopyLinkBtns()
 })
 
 addToggleCollapseBtnEvent()
-addClickEventToClickableRows()
 addClickEventToDropdownMenuOptions()
 highlightCurrentSidebarItem()
 updateLinkFieldInputs()

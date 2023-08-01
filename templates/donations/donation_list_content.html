@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
 {% load static %}
 
-<div class="donations">
+<div class="donations" hx-boost="true">
     <a class="collapse-button" data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="true" aria-controls="filters">
         <div class="arrow down"></div>
         <span>
@@ -10,7 +10,7 @@
         </span>
         <hr>
     </a>
-    <form hx-boost="true" hx-target="main" class="donations-form collapse show" method="GET" id="filters">
+    <form hx-target="main" id="filters" class="donations-form collapse show" action="{% url 'donations' %}" method="GET">
         {% crispy filter.form %}
     </form>
     {% include 'donations/donation_list_table.html' %}

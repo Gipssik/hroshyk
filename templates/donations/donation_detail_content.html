@@ -1,0 +1,20 @@
+<div class="donation-details">
+    <table class="donations-table">
+        <tr>
+            <th style="width: 10px">Нікнейм</th>
+            <td>{{ donation.nickname }}</td>
+        </tr>
+        <tr>
+            <th>Сума</th>
+            <td>{{ donation.amount }}</td>
+        </tr>
+        <tr>
+            <th>Дата</th>
+            <td>{{ donation.created_at|date:'d.m.Y H:i' }}</td>
+        </tr>
+        <tr>
+            <th>Повідомлення</th>
+            <td>{{ donation.message }}</td>
+        </tr>
+    </table>
+</div>

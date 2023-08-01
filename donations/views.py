@@ -14,22 +14,19 @@ from donations.utils import donation_add_validation
 
 class DonationsListView(LoginRequiredMixin, FilterView):
     model = Donation
-    paginate_by = 2
+    paginate_by = 25
     template_name = "donations/donation_list.html"
     context_object_name = "donations"
     ordering = "-created_at"
     filterset_class = DonationFilter
 
     def get(self, request, *args, **kwargs):
-        print(request.htmx)
-        print(request.htmx.boosted)
         if request.htmx and not request.htmx.boosted:
             self.template_name = "donations/donation_list_table.html"
         elif request.htmx:
             self.template_name = "donations/donation_list_content.html"
         else:
             self.template_name = "donations/donation_list.html"
-        print(self.template_name)
         return super().get(request, *args, **kwargs)
 
 
@@ -37,6 +34,13 @@ class DonationDetailView(LoginRequiredMixin, DetailView):
     model = Donation
     template_name = "donations/donation_detail.html"
     context_object_name = "donation"
+
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "donations/donation_detail_content.html"
+        else:
+            self.template_name = "donations/donation_detail.html"
+        return super().get(request, *args, **kwargs)
 
 
 class ViewerDonationPageView(CreateView):
