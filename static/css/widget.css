@@ -41,6 +41,12 @@
     word-break: break-word;
 }
 
+.widget-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .widget-configs-ranges-container {
     overflow-x: auto;
     padding-bottom: 3px;
@@ -68,6 +74,10 @@
 
     .widget-info div, .widget-info h2 {
         width: 100%;
+    }
+
+    .widget-buttons div:first-child {
+        flex: 0.2;
     }
 }
 

@@ -5,11 +5,13 @@ from widgets.views import (
     DonationWidgetConfigUpdateView,
     DonationWidgetUpdateView,
     DonationWidgetCreateView,
+    DonationWidgetDeleteView,
 )
 
 urlpatterns = [
     path("donation-widgets/", DonationWidgetListView.as_view(), name="donation_widgets_list"),
     path("donation-widgets/create/", DonationWidgetCreateView.as_view(), name="donation_widgets_create"),
+    path("donation-widgets/delete/<int:pk>/", DonationWidgetDeleteView.as_view(), name="donation_widgets_delete"),
     path(
         "donation-widgets/<int:pk>/",
         DonationWidgetUpdateView.as_view(),

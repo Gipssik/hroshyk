@@ -1,6 +1,9 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
-from django.views.generic import ListView, UpdateView, RedirectView, FormView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
 
 from widgets.forms import DonationWidgetForm, CreateDonationWidgetForm, DonationWidgetConfigFormSet
 from widgets.models import DonationWidget, DonationWidgetConfig
@@ -10,8 +13,10 @@ class DonationWidgetListView(LoginRequiredMixin, ListView):
     template_name = "widgets/donation_widget/donation_widget_list.html"
     model = DonationWidget
     context_object_name = "donation_widgets"
-    paginate_by = 50
     ordering = ["id"]
+
+    def get_queryset(self):
+        return DonationWidget.objects.filter(user=self.request.user)
 
     def get(self, request, *args, **kwargs):
         if request.htmx:
@@ -52,11 +57,33 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
 
         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
+    def post(self, request, *args, **kwargs):
+        if request.user.donation_widgets.count() >= 3:
+            messages.error(request, "Ви не можете створити більше 3-х віджетів")
+            return redirect("donation_widgets_list")
+        return super().post(request, *args, **kwargs)
+
 
 class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "widgets/donation_widget/donation_widget_update.html"
     model = DonationWidget
     form_class = DonationWidgetForm
+
+
+class DonationWidgetDeleteView(LoginRequiredMixin, DeleteView):
+    model = DonationWidget
+    success_url = reverse_lazy("donation_widgets_list")
+
+    def get_queryset(self):
+        return super().get_queryset().select_related("user")
+
+    def delete(self, request, *args, **kwargs):
+        # TODO: finish this
+        self.object = self.get_object()
+        if self.object.user != self.request.user:
+            return HttpResponseForbidden()
+        self.object.delete()
+        objects = DonationWidget.objects.filter(user=self.request.user)
 
 
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):

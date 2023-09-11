@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="widgets-container">
+<div class="widgets-container" hx-boost="true">
     <div class="widgets-header">
         <h1>Віджети подяк</h1>
         <a class="simple-btn" href="{% url 'donation_widgets_create' %}">
@@ -9,13 +9,25 @@
             </svg>
         </a>
     </div>
+    {% if messages %}
+        {% include 'utils/messages.html' %}
+    {% endif %}
     <div class="widget-block">
         {% for donation_widget in donation_widgets %}
             <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
                 <div class="widget-info">
                     <h2>{{ donation_widget.name|truncatechars:20 }}</h2>
-                    <div class="simple-btn" data-token="{{ donation_widget.link_identifier }}">
-                        <i class="bi bi-files"></i>Посилання
+{#                    TODO: fix this#}
+                    <div class="widget-buttons">
+                        <div class="danger-btn"
+                             hx-delete="{% url 'donation_widgets_delete' donation_widget.pk %}"
+                             hx-confirm="Ви впевнені, що хочете видалити?"
+                        >
+                            <i class="bi bi-trash" style="font-size: 18px;"></i>
+                        </div>
+                        <div class="simple-btn" data-token="{{ donation_widget.link_identifier }}">
+                            <i class="bi bi-files"></i>Посилання
+                        </div>
                     </div>
                 </div>
                 <span>Віджети налаштовано для діапазонів:</span>

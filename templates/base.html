@@ -27,5 +27,10 @@
     {% block extra_js %}
         <script src="{% static 'js/index.js' %}"></script>
     {% endblock %}
+    <script>
+        document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        })
+    </script>
 </body>
 </html>

@@ -16,7 +16,6 @@ class BaseWidget(models.Model):
         default=generate_link_identifier,
         verbose_name="Посилання на віджет",
     )
-    user = models.ForeignKey("accounts.Streamer", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата створення")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 
@@ -53,5 +52,7 @@ class DonationWidgetConfig(models.Model):
 
 
 class DonationWidget(BaseWidget):
+    user = models.ForeignKey("accounts.Streamer", on_delete=models.CASCADE, related_name="donation_widgets")
+
     def __str__(self):
         return f"{self.name} ({self.pk})"

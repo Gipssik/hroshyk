@@ -1,4 +1,4 @@
-const formMappings = {
+var formMappings = {
     'title': ["#main-wrapper > div > div.donation-page-title-block > h1"],
     'title_subtext': ["#main-wrapper > div > div.donation-page-title-block > p"],
     'nickname_placeholder': ["#id_nickname", 'placeholder'],
@@ -15,7 +15,7 @@ const formMappings = {
     'target_amount': ['#main-wrapper > div > div.donation-page-form-container.container > form > div.donation-page-progress-bar > div > span.progress-bar-target'],
 }
 
-const addEventListenersToFields = () => {
+var addEventListenersToFields = () => {
     const form = document.querySelector('.form-with-preview form')
     if (!form) {
         return
@@ -41,7 +41,7 @@ const addEventListenersToFields = () => {
     }
 }
 
-const processTargetAmount = (event) => {
+var processTargetAmount = (event) => {
     const progressBarContainer = document.querySelector("#main-wrapper > div > div.donation-page-form-container.container > form > div.donation-page-progress-bar > div")
     const progressBar = progressBarContainer.querySelector('.progress-bar')
     const current = progressBarContainer.querySelector('.progress-bar-current')

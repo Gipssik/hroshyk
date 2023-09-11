@@ -1,4 +1,4 @@
-const addToggleCollapseBtnEvent = () => {
+var addToggleCollapseBtnEvent = () => {
     const collapseBtn = document.querySelector('.collapse-button')
     const arrow = document.querySelector('.arrow')
     if (!collapseBtn) {
@@ -9,7 +9,7 @@ const addToggleCollapseBtnEvent = () => {
     })
 }
 
-const addClickEventToDropdownMenuOptions = () => {
+var addClickEventToDropdownMenuOptions = () => {
     const dropdownMenuOption = document.querySelectorAll('.dropdown-btn')
     if (!dropdownMenuOption) {
         return
@@ -22,7 +22,7 @@ const addClickEventToDropdownMenuOptions = () => {
     })
 }
 
-const highlightCurrentSidebarItem = () => {
+var highlightCurrentSidebarItem = () => {
     const sidebarItems = document.querySelectorAll('.sidebar-top a:not(.logo)')
     if (!sidebarItems) {
         return
@@ -45,17 +45,19 @@ const highlightCurrentSidebarItem = () => {
     })
 }
 
-const updateLinkFieldInputs = () => {
+var updateLinkFieldInputs = () => {
     const linkFieldInputs = document.querySelectorAll('.copy-link-field-input')
     if (!linkFieldInputs) {
         return
     }
     linkFieldInputs.forEach((input) => {
-        input.innerText = `${window.location.origin}${input.innerText.trim()}`
+        if (!input.innerText.includes(window.location.origin)) {
+            input.innerText = `${window.location.origin}${input.innerText.trim()}`
+        }
     })
 }
 
-const addClickEventToCopyLinkBtns = () => {
+var addClickEventToCopyLinkBtns = () => {
     const widgetInfoCopyLinkBtns = document.querySelectorAll('.widget-info .simple-btn')
     if (!widgetInfoCopyLinkBtns) {
         return
@@ -63,13 +65,13 @@ const addClickEventToCopyLinkBtns = () => {
     widgetInfoCopyLinkBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault()
-            let {token} = btn.dataset
+            const {token} = btn.dataset
             copyWidgetLinkToClipboardFromButton(btn, token)
         })
     })
 }
 
-const copyLinkFieldToClipboard = (id) => {
+var copyLinkFieldToClipboard = (id) => {
     let copyText = document.getElementById(id)
     let range = document.createRange()
     range.selectNode(copyText)
@@ -86,7 +88,7 @@ const copyLinkFieldToClipboard = (id) => {
     }, 3000)
 }
 
-const copyWidgetLinkToClipboardFromButton = (btn, token) => {
+var copyWidgetLinkToClipboardFromButton = (btn, token) => {
     let copyText = `${window.location.origin}/user-widgets/${token}`
     navigator.clipboard.writeText(copyText)
     btn.style.maxWidth = `${btn.offsetWidth}px`
