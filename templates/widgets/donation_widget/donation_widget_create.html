@@ -9,12 +9,13 @@
 {% endblock %}
 
 {% block cabinet-content %}
-    <form method="post" enctype="multipart/form-data">
-        <h4>Створення віджета</h4>
+    <form class="create-widget-form" method="post" enctype="multipart/form-data">
+        <h1>Створення віджета</h1>
         {% csrf_token %}
         {{ form|crispy }}
         {{ formset.management_form }}
-        <h4>Конфігурація для віджета</h4>
+        <hr>
+        <h3>Базова конфігурація для віджета</h3>
         {% for form in formset %}
             {{ form|crispy }}
         {% endfor %}

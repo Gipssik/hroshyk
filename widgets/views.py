@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
 from widgets.forms import DonationWidgetForm, CreateDonationWidgetForm, DonationWidgetConfigFormSet
 from widgets.models import DonationWidget, DonationWidgetConfig
@@ -16,7 +17,7 @@ class DonationWidgetListView(LoginRequiredMixin, ListView):
     ordering = ["id"]
 
     def get_queryset(self):
-        return DonationWidget.objects.filter(user=self.request.user)
+        return self.model.objects.filter(user=self.request.user).order_by("id")
 
     def get(self, request, *args, **kwargs):
         if request.htmx:
@@ -67,23 +68,35 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
 class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "widgets/donation_widget/donation_widget_update.html"
     model = DonationWidget
+    context_object_name = "donation_widget"
     form_class = DonationWidgetForm
 
+    def get_queryset(self):
+        return self.model.objects.prefetch_related("configs")
 
-class DonationWidgetDeleteView(LoginRequiredMixin, DeleteView):
+    def form_valid(self, form):
+        if self.object.user != self.request.user:
+            return HttpResponseForbidden()
+        self.object = form.save()
+        return self.render_to_response(self.get_context_data(form=form, donation_widget=self.object))
+
+
+class DonationWidgetDeleteView(LoginRequiredMixin, MultipleObjectMixin, DeleteView):
     model = DonationWidget
     success_url = reverse_lazy("donation_widgets_list")
+    context_object_name = DonationWidgetListView.context_object_name
+    template_name = "widgets/donation_widget/donation_widget_list_content.html"
 
     def get_queryset(self):
-        return super().get_queryset().select_related("user")
+        return self.model.objects.filter(user=self.request.user).order_by("id")
 
-    def delete(self, request, *args, **kwargs):
-        # TODO: finish this
-        self.object = self.get_object()
+    def form_valid(self, form):
         if self.object.user != self.request.user:
             return HttpResponseForbidden()
         self.object.delete()
-        objects = DonationWidget.objects.filter(user=self.request.user)
+        object_list = self.get_queryset()
+        context = self.get_context_data(object_list=object_list)
+        return self.render_to_response(context)
 
 
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):

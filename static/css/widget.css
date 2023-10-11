@@ -67,6 +67,26 @@
     min-width: fit-content;
 }
 
+.create-widget-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 700px;
+}
+
+.update-widget-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.update-widget-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 700px;
+}
+
 @media (max-width: 1350px) {
     .widget-info {
         flex-direction: column;

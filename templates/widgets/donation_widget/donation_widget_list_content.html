@@ -14,14 +14,15 @@
     {% endif %}
     <div class="widget-block">
         {% for donation_widget in donation_widgets %}
-            <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
+            <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit" hx-trigger="this">
                 <div class="widget-info">
                     <h2>{{ donation_widget.name|truncatechars:20 }}</h2>
-{#                    TODO: fix this#}
                     <div class="widget-buttons">
                         <div class="danger-btn"
-                             hx-delete="{% url 'donation_widgets_delete' donation_widget.pk %}"
+                             hx-post="{% url 'donation_widgets_delete' donation_widget.pk %}"
                              hx-confirm="Ви впевнені, що хочете видалити?"
+                             hx-target="closest .widgets-container"
+                             onclick="event.preventDefault()"
                         >
                             <i class="bi bi-trash" style="font-size: 18px;"></i>
                         </div>
@@ -45,12 +46,9 @@
                     </div>
                 </div>
             </a>
-
+        {% empty %}
+            <div>У вас немає віджетів.</div>
         {% endfor %}
-
-        {% if not donation_widgets %}
-
-        {% endif %}
 
     </div>
 </div>
