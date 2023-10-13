@@ -14,6 +14,7 @@
     {% endif %}
     <div class="widget-block">
         {% for donation_widget in donation_widgets %}
+{#            TODO: it is not fixed #}
             <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit" hx-trigger="this">
                 <div class="widget-info">
                     <h2>{{ donation_widget.name|truncatechars:20 }}</h2>

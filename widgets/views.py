@@ -102,6 +102,7 @@ class DonationWidgetDeleteView(LoginRequiredMixin, MultipleObjectMixin, DeleteVi
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "widgets/donation_widget/donation_widget_config_update.html"
     model = DonationWidgetConfig
+    context_object_name = "donation_widget_config"
     fields = "__all__"
 
 

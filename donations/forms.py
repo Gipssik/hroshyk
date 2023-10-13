@@ -19,15 +19,9 @@ class DonationForm(forms.ModelForm):
             HTML(
                 """
                 <div class="submit-btn">
-                    {% if is_preview == True %}
-                        <div class="twitch-btn">
-                            {{ donation_page.donate_button_text }}
-                        </div>
-                    {% else %}
-                        <button type="submit" class="twitch-btn">
-                            {{ donation_page.donate_button_text }}
-                        </button>
-                    {% endif %}
+                    <button type="submit" class="twitch-btn">
+                        {{ donation_page.donate_button_text }}
+                    </button>
                 </div>
             """
             ),

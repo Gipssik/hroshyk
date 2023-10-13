@@ -47,6 +47,10 @@ header {
     padding: 30px;
 }
 
+hr {
+    color: #9146FF !important;
+}
+
 main {
     position: relative;
     left: 0;
@@ -260,6 +264,7 @@ a:hover .no-attention-fill {
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.15);
     letter-spacing: 0.5px;
+    overflow-x: hidden;
 }
 
 .copy-link-field-container .linkinput {
@@ -273,5 +278,16 @@ a:hover .no-attention-fill {
     right: 0;
     bottom: 0;
 
+}
+
+@media (max-width: 800px) {
+    .copy-link-field-container {
+        flex-direction: column;
+    }
+
+    .copy-link-field-container .copy-link-field-input,
+    .copy-link-field-container .simple-btn {
+        width: 100%;
+    }
 }
 

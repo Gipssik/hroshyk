@@ -2,8 +2,8 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-<div class="form-with-preview">
-    <form action="#" method="post">
+<div class="form-with-preview" hx-boost="true">
+    <form action="#" method="post" hx-target=".form-with-preview" hx-swap="outerHTML">
         {% if messages %}
             {% include 'utils/messages.html' %}
         {% endif %}
@@ -21,7 +21,7 @@
     <div class="preview-container" id="preview-container">
         <h2>Попередній перегляд</h2>
         <div class="preview">
-            {% include 'donation_page/viewer_donation_page.html' with donation_page=object form=donation_form %}
+            <iframe height="1000px" width="100%" src="{% url 'viewer_donation_page' object.page_link %}" frameborder="0"></iframe>
         </div>
     </div>
 

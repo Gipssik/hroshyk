@@ -1,0 +1,32 @@
+{% load widget_filters %}
+
+<div class="donation-alert-container">
+    <img src="{{ config.image.url }}" alt="Картинка">
+    <h1 style="
+            font-weight: 900;
+            font-size: {{ config.title_font_size }}px;
+            color: {{ config.title_color }};
+            -webkit-text-stroke: 1px {{ config.title_shadow_color }};
+            "
+    >
+        {% if donation %}
+            {% format_string config.title_format nickname=donation.nickname amount=donation.amount %}
+        {% else %}
+            {% format_string config.title_format nickname="Anonymous" amount=100 %}
+        {% endif %}
+
+    </h1>
+    <div style="
+            font-weight: 900;
+            font-size: {{ config.message_font_size }}px;
+            color: {{ config.title_color }};
+            -webkit-text-stroke: 1px {{ config.title_shadow_color }};
+            "
+    >
+        {% if donation %}
+            {{ donation.message|safe }}
+        {% else %}
+            Текст повідомлення
+        {% endif %}
+    </div>
+</div>

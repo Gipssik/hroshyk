@@ -5,11 +5,7 @@
 {% load static %}
 
 {% block title %}
-    {% if is_preview == False %}
-        {{ donation_page.page_title }}
-    {% else %}
-        Грошик - Кабінет
-    {% endif %}
+    {{ donation_page.page_title }}
 {% endblock %}
 
 {% block extra_head %}
@@ -48,7 +44,7 @@
         </div>
     </div>
 
-    {% if is_preview == True %}
-        {% block extra_js %}{% endblock %}
-    {% endif %}
+    {% block extra_js %}
+        <script defer src="{% static 'js/viewerDonationPage.js' %}"></script>
+    {% endblock %}
 {% endblock %}

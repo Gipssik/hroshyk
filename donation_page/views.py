@@ -23,7 +23,6 @@ class DonationPageView(LoginRequiredMixin, UpdateView):
         except KeyError:
             return data
         donation_add_validation(form, obj)
-        data["is_preview"] = True
         return data
 
     def get_object(self, queryset=None):

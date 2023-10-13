@@ -6,6 +6,7 @@
 {% block extra_head %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/widget.css' %}">
+    <link rel="stylesheet" href="{% static 'css/donation_alert.css' %}">
 {% endblock %}
 
 {% block cabinet-content %}
@@ -19,11 +20,17 @@
         </div>
         <div>
             <h2>Конфігурації для віджета</h2>
-            {% for config in donation_widget.configs.all %}
-                <div>Конфігурація для діапазону {{ config.min_amount }} - {{ config.max_amount }} грн</div>
-            {% empty %}
-                <div>Немає конфігурацій для цього віджета.</div>
-            {% endfor %}
+            <hr>
+            <div class="donation-configs-container">
+                {% for config in donation_widget.configs.all %}
+                    <a class="donation-config-alert-container" href="{% url 'donation_widgets_config_update' config.pk %}">
+                        <h5>Діапазон <strong>{{ config.min_amount }} - {{ config.max_amount }}</strong> грн</h5>
+                        {% include 'widgets/donation_widget/donation_alert.html' with config=config %}
+                    </a>
+                {% empty %}
+                    <div>Немає конфігурацій для цього віджета.</div>
+                {% endfor %}
+            </div>
         </div>
 
     </div>

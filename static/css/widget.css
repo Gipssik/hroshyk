@@ -20,7 +20,7 @@
     text-decoration: none;
     color: #ffffff;
     background: #1a1a1a;
-    border: 2px solid rgba(145, 70, 255, 0.65);
+    border: 1px solid rgba(145, 70, 255, 0.65);
     border-radius: 5px;
     padding: 20px;
     transition: all 0.15s ease-in-out;
@@ -81,10 +81,49 @@
 }
 
 .update-widget-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
     max-width: 700px;
+}
+
+.donation-configs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px 20px;
+    padding-bottom: 50px;
+}
+
+.donation-config-alert-container {
+    flex-basis: calc(33.33% - 15px);
+    min-width: 275px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.donation-config-alert-container > div {
+    padding: 10px;
+    border: 1px solid #4b2e80;
+    border-radius: 5px;
+    transition: all 0.15s ease-in-out;
+}
+
+.donation-config-alert-container:hover > div {
+    border-color: #9146FF;
+}
+
+.donation-config-alert-container h5 {
+    text-align: center;
+}
+
+.donation-config-alert-container h1 {
+    word-break: break-word;
+}
+
+.update-widget-config-container {
+    display: flex;
+    gap: 30px;
+}
+.update-widget-config-container > div {
+    flex-basis: 50%;
 }
 
 @media (max-width: 1350px) {
@@ -99,11 +138,19 @@
     .widget-buttons div:first-child {
         flex: 0.2;
     }
+
+    .donation-config-alert-container {
+        flex-basis: calc(50% - 20px); /* 2 items per row */
+    }
 }
 
 @media (max-width: 1000px) {
     .widget-unit {
         flex-basis: 100%;
+    }
+
+    .donation-config-alert-container {
+        flex-basis: calc(100% - 20px); /* 1 item per row */
     }
 }
 

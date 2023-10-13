@@ -9,5 +9,11 @@
 {% endblock %}
 
 {% block cabinet-content %}
-	{{ form|crispy }}
+	<div class="update-widget-config-container" hx-boost="true">
+        <form method="post" enctype="multipart/form-data">
+            {{ form|crispy }}
+            <button class="twitch-btn" type="submit">Оновити</button>
+        </form>
+        {% include 'widgets/donation_widget/donation_alert.html' with config=donation_widget_config %}
+    </div>
 {% endblock %}
