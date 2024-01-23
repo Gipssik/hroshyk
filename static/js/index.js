@@ -65,6 +65,7 @@ var addClickEventToCopyLinkBtns = () => {
     widgetInfoCopyLinkBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault()
+            e.stopPropagation()
             const {token} = btn.dataset
             copyWidgetLinkToClipboardFromButton(btn, token)
         })

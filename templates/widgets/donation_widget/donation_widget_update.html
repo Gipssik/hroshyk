@@ -3,12 +3,6 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% block extra_head %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/widget.css' %}">
-    <link rel="stylesheet" href="{% static 'css/donation_alert.css' %}">
-{% endblock %}
-
 {% block cabinet-content %}
     <div class="update-widget-container" hx-boost="true">
         <div>

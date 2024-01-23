@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block extra_head %}
+    {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/viewer_donation_page.css' %}">
     <meta name="description" content="{{ donation_page.page_meta }}">
 {% endblock %}
@@ -20,7 +21,7 @@
             <h1>{{ donation_page.title }}</h1>
             <p>{{ donation_page.title_subtext }}</p>
         </div>
-        <div class="donation-page-form-container container">
+        <div class="donation-page-form-container">
             <form action="#" method="post">
                 <div class="donation-page-progress-bar">
                     <h5>{{ donation_page.target_title }}</h5>

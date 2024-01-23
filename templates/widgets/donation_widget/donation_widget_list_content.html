@@ -14,8 +14,7 @@
     {% endif %}
     <div class="widget-block">
         {% for donation_widget in donation_widgets %}
-{#            TODO: it is not fixed #}
-            <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit" hx-trigger="this">
+            <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
                 <div class="widget-info">
                     <h2>{{ donation_widget.name|truncatechars:20 }}</h2>
                     <div class="widget-buttons">
@@ -23,7 +22,7 @@
                              hx-post="{% url 'donation_widgets_delete' donation_widget.pk %}"
                              hx-confirm="Ви впевнені, що хочете видалити?"
                              hx-target="closest .widgets-container"
-                             onclick="event.preventDefault()"
+                             onclick="event.preventDefault(); event.stopPropagation()"
                         >
                             <i class="bi bi-trash" style="font-size: 18px;"></i>
                         </div>

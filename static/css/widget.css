@@ -122,8 +122,10 @@
     display: flex;
     gap: 30px;
 }
+
 .update-widget-config-container > div {
     flex-basis: 50%;
+    max-width: 50%;
 }
 
 @media (max-width: 1350px) {

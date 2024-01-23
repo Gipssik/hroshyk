@@ -3,11 +3,6 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% block extra_head %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/widget.css' %}">
-{% endblock %}
-
 {% block cabinet-content %}
     <form class="create-widget-form" method="post" enctype="multipart/form-data">
         <h1>Створення віджета</h1>

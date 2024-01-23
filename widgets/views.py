@@ -6,7 +6,12 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
 from django.views.generic.list import MultipleObjectMixin
 
-from widgets.forms import DonationWidgetForm, CreateDonationWidgetForm, DonationWidgetConfigFormSet
+from widgets.forms import (
+    DonationWidgetForm,
+    CreateDonationWidgetForm,
+    DonationWidgetConfigFormSet,
+    DonationWidgetConfigUpdateForm,
+)
 from widgets.models import DonationWidget, DonationWidgetConfig
 
 
@@ -100,10 +105,10 @@ class DonationWidgetDeleteView(LoginRequiredMixin, MultipleObjectMixin, DeleteVi
 
 
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = "widgets/donation_widget/donation_widget_config_update.html"
     model = DonationWidgetConfig
+    form_class = DonationWidgetConfigUpdateForm
     context_object_name = "donation_widget_config"
-    fields = "__all__"
+    template_name = "widgets/donation_widget/donation_widget_config_update.html"
 
 
 class DonationWidgetLinkView(RedirectView):

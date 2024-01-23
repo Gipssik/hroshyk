@@ -7,6 +7,7 @@
             font-size: {{ config.title_font_size }}px;
             color: {{ config.title_color }};
             -webkit-text-stroke: 1px {{ config.title_shadow_color }};
+            word-break: break-all;
             "
     >
         {% if donation %}
@@ -21,6 +22,7 @@
             font-size: {{ config.message_font_size }}px;
             color: {{ config.title_color }};
             -webkit-text-stroke: 1px {{ config.title_shadow_color }};
+            word-wrap: break-word;
             "
     >
         {% if donation %}
