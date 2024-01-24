@@ -14,7 +14,7 @@ from donations.utils import donation_add_validation
 
 class DonationsListView(LoginRequiredMixin, FilterView):
     model = Donation
-    paginate_by = 25
+    paginate_by = 2
     template_name = "donations/donation_list.html"
     context_object_name = "donations"
     ordering = "-created_at"
@@ -78,7 +78,7 @@ class ViewerDonationPageView(CreateView):
         link = self.kwargs["link"]
         streamer = Streamer.objects.get(donation_page__page_link=link)
         if not streamer:
-            raise Http404("Сторінка не знайдена")
+            raise Http404
         kwargs["data"] = QueryDict(self.request.POST.copy().urlencode(), mutable=True)
         kwargs["data"]["streamer"] = str(streamer.id)
         return kwargs

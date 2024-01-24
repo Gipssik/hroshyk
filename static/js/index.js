@@ -82,7 +82,7 @@ var copyLinkFieldToClipboard = (id) => {
     let btn = copyText.parentElement.parentElement.querySelector('.simple-btn')
     btn.style.maxWidth = `${btn.offsetWidth}px`
     let btnHtml = btn.innerHTML
-    btn.innerText = 'Скопійовано!'
+    btn.innerText = `${gettext('Copied')}!`  // gettext is a function from Django
     setTimeout(() => {
         btn.style.maxWidth = 'initial'
         btn.innerHTML = btnHtml

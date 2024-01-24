@@ -1,11 +1,13 @@
-<div hx-boost="true" hx-get="{% url 'donations' %}" hx-trigger="every 30s" hx-swap="outerHTML">
+{% load i18n %}
+
+<div hx-boost="true" hx-get="{% url 'donations' %}?{{ request.GET.urlencode }}" hx-trigger="every 30s" hx-swap="outerHTML">
     <table class="donations-table">
         <thead>
         <tr>
-            <th class="nickname">Нікнейм</th>
-            <th class="amount">Сума</th>
-            <th class="message">Повідомлення</th>
-            <th class="created-at">Дата</th>
+            <th class="nickname">{% trans 'Nickname' %}</th>
+            <th class="amount">{% trans 'Amount' %}</th>
+            <th class="message">{% trans 'Message' %}</th>
+            <th class="created-at">{% trans 'Date' %}</th>
         </tr>
         </thead>
         <tbody>
@@ -21,9 +23,9 @@
         {% empty %}
             <tr>
                 {% if request.GET.urlencode %}
-                    <td colspan="4">Ніц не знайшли.</td>
+                    <td colspan="4">{% trans 'We found nothing' %}.</td>
                 {% else %}
-                    <td colspan="4">Ви бомжик, у вас немає грошиків.</td>
+                    <td colspan="4">{% trans 'You are broke, you have no hroshykiv' %}.</td>
                 {% endif %}
             </tr>
         {% endfor %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
@@ -10,7 +11,7 @@
 {% endblock %}
 
 {% block title %}
-    Грошик - Кабінет
+    {% trans 'Hroshyk' %} - {% trans 'Cabinet' %}
 {% endblock %}
 
 {% block content %}

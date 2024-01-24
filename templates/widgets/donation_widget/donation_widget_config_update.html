@@ -2,12 +2,13 @@
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block cabinet-content %}
     <div class="update-widget-config-container" hx-boost="true">
         <form method="post" enctype="multipart/form-data">
             {{ form|crispy }}
-            <button class="twitch-btn" type="submit">Оновити</button>
+            <button class="twitch-btn" type="submit">{% trans 'Update' %}</button>
         </form>
         {% include 'widgets/donation_widget/donation_alert.html' with config=donation_widget_config %}
     </div>

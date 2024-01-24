@@ -1,13 +1,14 @@
 from django.db import models
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import Streamer
 
 
 class Donation(models.Model):
-    nickname = models.CharField(max_length=128, verbose_name="Нікнейм")
-    amount = models.IntegerField(verbose_name="Кількість")
-    message = models.TextField(verbose_name="Повідомлення", null=True, blank=True)
+    nickname = models.CharField(max_length=128, verbose_name=_("Nickname"))
+    amount = models.IntegerField(verbose_name=_("Amount"))
+    message = models.TextField(verbose_name=_("Message"), null=True, blank=True)
     streamer = models.ForeignKey(Streamer, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

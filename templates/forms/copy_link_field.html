@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="copy-link-field-container">
     <span class="copy-link-field-input" id="{{ widget.attrs.id }}-link" data-value="{{ widget.mutated_value|stringformat:'s' }}">
         {% if widget.attrs.secret %}
@@ -8,6 +10,6 @@
     </span>
     {% include "django/forms/widgets/text.html" %}
     <div class="simple-btn" onclick="copyLinkFieldToClipboard('{{ widget.attrs.id }}-link')">
-        <i class="bi bi-files"></i>Копіювати
+        <i class="bi bi-files"></i>{% trans 'Copy' %}
     </div>
 </div>

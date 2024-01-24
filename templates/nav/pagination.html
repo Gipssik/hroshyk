@@ -1,32 +1,71 @@
+{% load i18n %}
+{% load donations_filters %}
+
 <div class="pagination justify-content-center">
     <ul class="pagination">
         {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page=1">&laquo; Перша</a>
+                <a hx-target="main"
+                   hx-swap="innerHTML"
+                   class="page-link"
+                   href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page=1"
+                >
+                    {% trans 'FirstPageNumeral' %}
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lsaquo; Попередня</a>
+                <a hx-target="main"
+                   hx-swap="innerHTML"
+                   class="page-link"
+                   href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                >
+                    {% trans 'PreviousPageNumeral' %}
+                </a>
             </li>
         {% endif %}
 
         {% for page in page_obj.paginator.page_range %}
             {% if page_obj.number == page %}
                 <li class="page-item active">
-                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                    <a hx-target="main"
+                       hx-swap="innerHTML"
+                       class="page-link"
+                       href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page={{ page }}"
+                    >
+                        {{ page }}
+                    </a>
                 </li>
             {% elif page > page_obj.number|add:'-3' and page < page_obj.number|add:'3' %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                    <a hx-target="main"
+                       hx-swap="innerHTML"
+                       class="page-link"
+                       href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page={{ page }}"
+                    >
+                        {{ page }}
+                    </a>
                 </li>
             {% endif %}
         {% endfor %}
 
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Наступна &rsaquo;</a>
+                <a hx-target="main"
+                   hx-swap="innerHTML"
+                   class="page-link"
+                   href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page={{ page_obj.next_page_number }}"
+                >
+                    {% trans 'NextPageNumeral' %}
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Остання &raquo;</a>
+                <a hx-target="main"
+                   hx-swap="innerHTML"
+                   class="page-link"
+                   href="?{% if request.GET|remove_obsolete_pages %}{{ request.GET|remove_obsolete_pages }}&{% endif %}page={{ page_obj.paginator.num_pages }}"
+                >
+                    {% trans 'LastPageNumeral' %}
+                </a>
             </li>
         {% endif %}
     </ul>

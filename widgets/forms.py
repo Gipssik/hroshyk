@@ -1,6 +1,7 @@
 from crispy_forms.helper import FormHelper
 from django import forms
 from django.forms import ModelForm, inlineformset_factory
+from django.utils.translation import gettext_lazy as _
 
 from donation_page.forms import LinkInput
 from widgets.models import DonationWidget, DonationWidgetConfig
@@ -41,8 +42,8 @@ class CreateDonationWidgetForm(ModelForm):
 
     name = forms.CharField(
         max_length=255,
-        label="Назва віджета",
-        widget=forms.TextInput(attrs={"placeholder": "Назва віджета"}),
+        label=_("Widget name"),
+        widget=forms.TextInput(attrs={"placeholder": _("Widget name")}),
     )
 
 
@@ -70,7 +71,7 @@ class DonationWidgetForm(ModelForm):
                 "url_kwarg": "link_identifier",
             }
         ),
-        label="Посилання на віджет",
+        label=_("Widget link"),
         required=True,
         disabled=True,
     )

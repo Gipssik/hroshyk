@@ -1,0 +1,370 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 02:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+#: accounts/models.py:12
+msgid "Email address"
+msgstr "Електронна адреса"
+
+#: accounts/models.py:14
+msgid "Profile image url"
+msgstr "Посилання на зображення профілю"
+
+#: accounts/models.py:15
+msgid "Balance"
+msgstr "Баланс"
+
+#: accounts/models.py:18 templates/nav/sidebar.html:18
+msgid "Donation page"
+msgstr "Сторінка подяк"
+
+#: donation_page/forms.py:55 donation_page/models.py:9
+msgid "Page link"
+msgstr "Посилання на сторінку"
+
+#: donation_page/forms.py:62
+msgid "Reset the collected amount"
+msgstr "Скинути зібрану суму"
+
+#: donation_page/models.py:7
+msgid "Viewer pays a commission"
+msgstr "Глядач платить комісію"
+
+#: donation_page/models.py:8
+msgid "Commission percent"
+msgstr "Відсоток комісії"
+
+#: donation_page/models.py:12 donation_page/models.py:43
+msgid "Send Hroshyk"
+msgstr "Надіслати Грошик"
+
+#: donation_page/models.py:13
+msgid "Page title"
+msgstr "Заголовок сторінки"
+
+#: donation_page/models.py:15
+msgid "Page meta description"
+msgstr "Мета-опис сторінки"
+
+#: donation_page/models.py:18
+msgid "Send Hroshyk to the streamer"
+msgstr "Надіслати Грошик стрімеру"
+
+#: donation_page/models.py:19
+msgid "Greeting title"
+msgstr "Заголовок привітання"
+
+#: donation_page/models.py:23
+msgid "Send Hroshyk to this streamer"
+msgstr "Надіслати Грошик цьому стрімеру"
+
+#: donation_page/models.py:24
+msgid "Greeting subtext"
+msgstr "Підзаголовок привітання"
+
+#: donation_page/models.py:28 donations/filters.py:15 donations/filters.py:16
+#: donations/models.py:9 templates/donations/donation_detail_content.html:6
+#: templates/donations/donation_list_table.html:7
+msgid "Nickname"
+msgstr "Нікнейм"
+
+#: donation_page/models.py:29
+msgid "Nickname placeholder"
+msgstr "Плейсхолдер нікнейму"
+
+#: donation_page/models.py:33 donations/filters.py:22 donations/filters.py:28
+#: donations/models.py:10 templates/donations/donation_detail_content.html:10
+#: templates/donations/donation_list_table.html:8
+msgid "Amount"
+msgstr "Сума"
+
+#: donation_page/models.py:34
+msgid "Amount placeholder"
+msgstr "Плейсхолдер суми"
+
+#: donation_page/models.py:38 donations/models.py:11
+#: templates/donations/donation_detail_content.html:18
+#: templates/donations/donation_list_table.html:9
+msgid "Message"
+msgstr "Повідомлення"
+
+#: donation_page/models.py:39
+msgid "Message placeholder"
+msgstr "Плейсхолдер повідомлення"
+
+#: donation_page/models.py:44
+msgid "Donation button text"
+msgstr "Текст кнопки подяки"
+
+#: donation_page/models.py:46
+msgid "Test mode"
+msgstr "Тестовий режим"
+
+#: donation_page/models.py:47
+msgid "Minimum message length"
+msgstr "Мінімальна довжина повідомлення"
+
+#: donation_page/models.py:48
+msgid "Maximum message length"
+msgstr "Максимальна довжина повідомлення"
+
+#: donation_page/models.py:49
+msgid "Minimum nickname length"
+msgstr "Мінімальна довжина нікнейму"
+
+#: donation_page/models.py:50
+msgid "Maximum nickname length"
+msgstr "Максимальна довжина нікнейму"
+
+#: donation_page/models.py:51
+msgid "Minimum amount"
+msgstr "Мінімальна сума"
+
+#: donation_page/models.py:52
+msgid "Maximum amount"
+msgstr "Максимальна сума"
+
+#: donation_page/models.py:55
+msgid "Donation target"
+msgstr "Ціль збору"
+
+#: donation_page/models.py:56
+msgid "Donation target title"
+msgstr "Заголовок цілі збору"
+
+#: donation_page/models.py:58
+msgid "Donation target amount"
+msgstr "Сума цілі збору"
+
+#: donation_page/models.py:59
+msgid "Donation target current amount"
+msgstr "Поточна сума цілі збору"
+
+#: donation_page/views.py:46
+msgid "Data updated successfully"
+msgstr "Дані успішно оновлено"
+
+#: donations/filters.py:21
+msgid "Amount more than (inclusive)"
+msgstr "Сума більше ніж (включно)"
+
+#: donations/filters.py:27
+msgid "Amount less than (inclusive)"
+msgstr "Сума менше ніж (включно)"
+
+#: donations/filters.py:32 templates/donations/donation_detail_content.html:14
+#: templates/donations/donation_list_table.html:10
+msgid "Date"
+msgstr "Дата"
+
+#: templates/cabinet.html:14 templates/utils/logo.html:3
+msgid "Hroshyk"
+msgstr "Грошик"
+
+#: templates/cabinet.html:14 templates/nav/header.html:29
+msgid "Cabinet"
+msgstr "Кабінет"
+
+#: templates/donation_page/donation_page_content.html:13
+#: templates/donation_page/donation_page_content.html:18
+msgid "Save"
+msgstr "Зберегти"
+
+#: templates/donation_page/donation_page_content.html:14
+#: templates/donation_page/donation_page_content.html:23
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: templates/donation_page/viewer_donation_page.html:37
+#: templates/widgets/donation_widget/donation_widget_list_content.html:41
+msgid "hrn."
+msgstr "грн."
+
+#: templates/donations/donation_list_content.html:10
+msgid "Filters"
+msgstr "Фільтри"
+
+#: templates/donations/donation_list_table.html:26
+msgid "We found nothing"
+msgstr "Ніц не знайшли"
+
+#: templates/donations/donation_list_table.html:28
+msgid "You are broke, you have no hroshykiv"
+msgstr "Ви банкрут, у вас немає грошиків"
+
+#: templates/forms/copy_link_field.html:13
+msgid "Copy"
+msgstr "Копіювати"
+
+#: templates/nav/header.html:9
+msgid "Sign in with"
+msgstr "Увійти через"
+
+#: templates/nav/header.html:17 templates/nav/header.html:19
+msgid "Profile photo"
+msgstr "Фото профілю"
+
+#: templates/nav/header.html:38 templates/nav/sidebar.html:47
+msgid "Sign out"
+msgstr "Вийти"
+
+#: templates/nav/pagination.html:7
+msgid "FirstPageNumeral"
+msgstr "Перша"
+
+#: templates/nav/pagination.html:10
+msgid "PreviousPageNumeral"
+msgstr "Попередня"
+
+#: templates/nav/pagination.html:28
+msgid "NextPageNumeral"
+msgstr "Наступна"
+
+#: templates/nav/pagination.html:31
+msgid "LastPageNumeral"
+msgstr "Остання"
+
+#: templates/nav/sidebar.html:11 templates/nav/sidebar.html:31
+msgid "Donations"
+msgstr "Подяки"
+
+#: templates/nav/sidebar.html:24
+msgid "Widgets"
+msgstr "Віджети"
+
+#: templates/nav/sidebar.html:40
+msgid "Home page"
+msgstr "Головна"
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:11
+msgid "Update"
+msgstr "Оновити"
+
+#: templates/widgets/donation_widget/donation_widget_create.html:9
+msgid "Widget creation"
+msgstr "Створення віджету"
+
+#: templates/widgets/donation_widget/donation_widget_create.html:14
+msgid "Basic configuration for the widget"
+msgstr "Базова конфігурація віджету"
+
+#: templates/widgets/donation_widget/donation_widget_create.html:18
+msgid "Create"
+msgstr "Створити"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:6
+msgid "Donation widgets"
+msgstr "Віджети подяк"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:24
+msgid "Are you sure you want to remove?"
+msgstr "Ви впевнені, що хочете видалити?"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:31
+msgid "Link"
+msgstr "Посилання"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:35
+msgid "Widgets are configured for ranges"
+msgstr "Віджети налаштовано для діапазонів"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:45
+msgid "No ranges, because you need to configure them"
+msgstr "Ні для яких діапазонів, бо треба створити"
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:51
+msgid "You don't have any widgets"
+msgstr "У вас немає віджетів"
+
+#: widgets/forms.py:45 widgets/forms.py:46 widgets/models.py:13
+msgid "Widget name"
+msgstr "Назва віджету"
+
+#: widgets/forms.py:74 widgets/models.py:18
+msgid "Widget link"
+msgstr "Посилання на віджет"
+
+#: widgets/models.py:20
+msgid "Creation date"
+msgstr "Дата створення"
+
+#: widgets/models.py:21
+msgid "Update date"
+msgstr "Дата оновлення"
+
+#: widgets/models.py:28
+msgid "Title format"
+msgstr "Формат заголовку"
+
+#: widgets/models.py:29
+msgid "Minimum amount to display"
+msgstr "Мінімальна сума для відображення"
+
+#: widgets/models.py:30
+msgid "Maximum amount to display"
+msgstr "Максимальна сума для відображення"
+
+#: widgets/models.py:31
+msgid "Title font size"
+msgstr "Розмір шрифту заголовку"
+
+#: widgets/models.py:32
+msgid "Title color"
+msgstr "Колір заголовку"
+
+#: widgets/models.py:33
+msgid "Title shadow color"
+msgstr "Колір тіні заголовку"
+
+#: widgets/models.py:34
+msgid "Message font size"
+msgstr "Розмір шрифту повідомлення"
+
+#: widgets/models.py:35
+msgid "Message color"
+msgstr "Колір повідомлення"
+
+#: widgets/models.py:36
+msgid "Message shadow color"
+msgstr "Колір тіні повідомлення"
+
+#: widgets/models.py:37
+msgid "Image"
+msgstr "Зображення"
+
+#: widgets/models.py:40
+msgid "Sound"
+msgstr "Звук"
+
+#: widgets/models.py:43
+msgid "Sound volume"
+msgstr "Гучність звуку"
+
+#: widgets/models.py:44
+msgid "Speaker volume"
+msgstr "Гучність диктора"
+
+#: widgets/views.py:69
+msgid "You cannot create more than 3 widgets"
+msgstr "Ви не можете створити більше 3-х віджетів"
+
+msgid "Copied"
+msgstr "Скопійовано"

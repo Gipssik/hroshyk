@@ -1,11 +1,21 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.utils import timezone
+from django.views.decorators.http import last_modified
+from django.views.i18n import JavaScriptCatalog
 
 from accounts.views import HomeView
 from widgets.views import DonationWidgetLinkView
 
+last_modified_date = timezone.now()
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path(
+        "jsi18n/",
+        last_modified(lambda req, **kw: last_modified_date)(JavaScriptCatalog.as_view()),
+        name="javascript-catalog",
+    ),
     path(
         "user-widgets/<str:link_identifier>/",
         DonationWidgetLinkView.as_view(),

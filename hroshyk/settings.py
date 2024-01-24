@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import environ
+from django.utils.translation import gettext_lazy
 
 env = environ.Env()
 environ.Env.read_env()
@@ -153,11 +154,15 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-LANGUAGE_CODE = "uk"
+LANGUAGE_CODE = "en"
+
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 TIME_ZONE = "Europe/Kyiv"
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 

@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
 from django.views.generic.list import MultipleObjectMixin
 
@@ -65,7 +66,7 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
 
     def post(self, request, *args, **kwargs):
         if request.user.donation_widgets.count() >= 3:
-            messages.error(request, "Ви не можете створити більше 3-х віджетів")
+            messages.error(request, _("You cannot create more than 3 widgets"))
             return redirect("donation_widgets_list")
         return super().post(request, *args, **kwargs)
 

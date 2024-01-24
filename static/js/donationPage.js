@@ -51,7 +51,8 @@ var processTargetAmount = (event) => {
     const targetAmount = event.target.value
     const targetPercentage = ((currentAmount / targetAmount) * 100).toFixed(1)
     progressBar.style.width = `${targetPercentage}%`
-    current.innerText = `${currentAmount} грн (${targetPercentage}%)`
+    const hryvniaText = gettext('hrn.')  // gettext is a function from Django
+    current.innerText = `${currentAmount} ${hryvniaText} (${targetPercentage}%)`
 }
 
 document.addEventListener('htmx:pushedIntoHistory', (event) => {

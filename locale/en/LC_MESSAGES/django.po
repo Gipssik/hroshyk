@@ -1,0 +1,364 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 02:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/models.py:12
+msgid "Email address"
+msgstr ""
+
+#: accounts/models.py:14
+msgid "Profile image url"
+msgstr ""
+
+#: accounts/models.py:15
+msgid "Balance"
+msgstr ""
+
+#: accounts/models.py:18 templates/nav/sidebar.html:18
+msgid "Donation page"
+msgstr ""
+
+#: donation_page/forms.py:55 donation_page/models.py:9
+msgid "Page link"
+msgstr ""
+
+#: donation_page/forms.py:62
+msgid "Reset the collected amount"
+msgstr ""
+
+#: donation_page/models.py:7
+msgid "Viewer pays a commission"
+msgstr ""
+
+#: donation_page/models.py:8
+msgid "Commission percent"
+msgstr ""
+
+#: donation_page/models.py:12 donation_page/models.py:43
+msgid "Send Hroshyk"
+msgstr ""
+
+#: donation_page/models.py:13
+msgid "Page title"
+msgstr ""
+
+#: donation_page/models.py:15
+msgid "Page meta description"
+msgstr ""
+
+#: donation_page/models.py:18
+msgid "Send Hroshyk to the streamer"
+msgstr ""
+
+#: donation_page/models.py:19
+msgid "Greeting title"
+msgstr ""
+
+#: donation_page/models.py:23
+msgid "Send Hroshyk to this streamer"
+msgstr ""
+
+#: donation_page/models.py:24
+msgid "Greeting subtext"
+msgstr ""
+
+#: donation_page/models.py:28 donations/filters.py:15 donations/filters.py:16
+#: donations/models.py:9 templates/donations/donation_detail_content.html:6
+#: templates/donations/donation_list_table.html:7
+msgid "Nickname"
+msgstr ""
+
+#: donation_page/models.py:29
+msgid "Nickname placeholder"
+msgstr ""
+
+#: donation_page/models.py:33 donations/filters.py:22 donations/filters.py:28
+#: donations/models.py:10 templates/donations/donation_detail_content.html:10
+#: templates/donations/donation_list_table.html:8
+msgid "Amount"
+msgstr ""
+
+#: donation_page/models.py:34
+msgid "Amount placeholder"
+msgstr ""
+
+#: donation_page/models.py:38 donations/models.py:11
+#: templates/donations/donation_detail_content.html:18
+#: templates/donations/donation_list_table.html:9
+msgid "Message"
+msgstr ""
+
+#: donation_page/models.py:39
+msgid "Message placeholder"
+msgstr ""
+
+#: donation_page/models.py:44
+msgid "Donation button text"
+msgstr ""
+
+#: donation_page/models.py:46
+msgid "Test mode"
+msgstr ""
+
+#: donation_page/models.py:47
+msgid "Minimum message length"
+msgstr ""
+
+#: donation_page/models.py:48
+msgid "Maximum message length"
+msgstr ""
+
+#: donation_page/models.py:49
+msgid "Minimum nickname length"
+msgstr ""
+
+#: donation_page/models.py:50
+msgid "Maximum nickname length"
+msgstr ""
+
+#: donation_page/models.py:51
+msgid "Minimum amount"
+msgstr ""
+
+#: donation_page/models.py:52
+msgid "Maximum amount"
+msgstr ""
+
+#: donation_page/models.py:55
+msgid "Donation target"
+msgstr ""
+
+#: donation_page/models.py:56
+msgid "Donation target title"
+msgstr ""
+
+#: donation_page/models.py:58
+msgid "Donation target amount"
+msgstr ""
+
+#: donation_page/models.py:59
+msgid "Donation target current amount"
+msgstr ""
+
+#: donation_page/views.py:46
+msgid "Data updated successfully"
+msgstr ""
+
+#: donations/filters.py:21
+msgid "Amount more than (inclusive)"
+msgstr ""
+
+#: donations/filters.py:27
+msgid "Amount less than (inclusive)"
+msgstr ""
+
+#: donations/filters.py:32 templates/donations/donation_detail_content.html:14
+#: templates/donations/donation_list_table.html:10
+msgid "Date"
+msgstr ""
+
+#: templates/cabinet.html:14 templates/utils/logo.html:3
+msgid "Hroshyk"
+msgstr ""
+
+#: templates/cabinet.html:14 templates/nav/header.html:29
+msgid "Cabinet"
+msgstr ""
+
+#: templates/donation_page/donation_page_content.html:13
+#: templates/donation_page/donation_page_content.html:18
+msgid "Save"
+msgstr ""
+
+#: templates/donation_page/donation_page_content.html:14
+#: templates/donation_page/donation_page_content.html:23
+msgid "Preview"
+msgstr ""
+
+#: templates/donation_page/viewer_donation_page.html:37
+#: templates/widgets/donation_widget/donation_widget_list_content.html:41
+msgid "hrn."
+msgstr ""
+
+#: templates/donations/donation_list_content.html:10
+msgid "Filters"
+msgstr ""
+
+#: templates/donations/donation_list_table.html:26
+msgid "We found nothing"
+msgstr ""
+
+#: templates/donations/donation_list_table.html:28
+msgid "You are broke, you have no hroshykiv"
+msgstr ""
+
+#: templates/forms/copy_link_field.html:13
+msgid "Copy"
+msgstr ""
+
+#: templates/nav/header.html:9
+msgid "Sign in with"
+msgstr ""
+
+#: templates/nav/header.html:17 templates/nav/header.html:19
+msgid "Profile photo"
+msgstr ""
+
+#: templates/nav/header.html:38 templates/nav/sidebar.html:47
+msgid "Sign out"
+msgstr ""
+
+#: templates/nav/pagination.html:7
+msgid "FirstPageNumeral"
+msgstr "First"
+
+#: templates/nav/pagination.html:10
+msgid "PreviousPageNumeral"
+msgstr "Previous"
+
+#: templates/nav/pagination.html:28
+msgid "NextPageNumeral"
+msgstr "Next"
+
+#: templates/nav/pagination.html:31
+msgid "LastPageNumeral"
+msgstr "Last"
+
+#: templates/nav/sidebar.html:11 templates/nav/sidebar.html:31
+msgid "Donations"
+msgstr ""
+
+#: templates/nav/sidebar.html:24
+msgid "Widgets"
+msgstr ""
+
+#: templates/nav/sidebar.html:40
+msgid "Home page"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:11
+msgid "Update"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_create.html:9
+msgid "Widget creation"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_create.html:14
+msgid "Basic configuration for the widget"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_create.html:18
+msgid "Create"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:6
+msgid "Donation widgets"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:24
+msgid "Are you sure you want to remove?"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:31
+msgid "Link"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:35
+msgid "Widgets are configured for ranges"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:45
+msgid "No ranges, because you need to configure them"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_list_content.html:51
+msgid "You don't have any widgets"
+msgstr ""
+
+#: widgets/forms.py:45 widgets/forms.py:46 widgets/models.py:13
+msgid "Widget name"
+msgstr ""
+
+#: widgets/forms.py:74 widgets/models.py:18
+msgid "Widget link"
+msgstr ""
+
+#: widgets/models.py:20
+msgid "Creation date"
+msgstr ""
+
+#: widgets/models.py:21
+msgid "Update date"
+msgstr ""
+
+#: widgets/models.py:28
+msgid "Title format"
+msgstr ""
+
+#: widgets/models.py:29
+msgid "Minimum amount to display"
+msgstr ""
+
+#: widgets/models.py:30
+msgid "Maximum amount to display"
+msgstr ""
+
+#: widgets/models.py:31
+msgid "Title font size"
+msgstr ""
+
+#: widgets/models.py:32
+msgid "Title color"
+msgstr ""
+
+#: widgets/models.py:33
+msgid "Title shadow color"
+msgstr ""
+
+#: widgets/models.py:34
+msgid "Message font size"
+msgstr ""
+
+#: widgets/models.py:35
+msgid "Message color"
+msgstr ""
+
+#: widgets/models.py:36
+msgid "Message shadow color"
+msgstr ""
+
+#: widgets/models.py:37
+msgid "Image"
+msgstr ""
+
+#: widgets/models.py:40
+msgid "Sound"
+msgstr ""
+
+#: widgets/models.py:43
+msgid "Sound volume"
+msgstr ""
+
+#: widgets/models.py:44
+msgid "Speaker volume"
+msgstr ""
+
+#: widgets/views.py:69
+msgid "You cannot create more than 3 widgets"
+msgstr ""

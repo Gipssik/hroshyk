@@ -2,19 +2,20 @@
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block cabinet-content %}
     <form class="create-widget-form" method="post" enctype="multipart/form-data">
-        <h1>Створення віджета</h1>
+        <h1>{% trans 'Widget creation' %}</h1>
         {% csrf_token %}
         {{ form|crispy }}
         {{ formset.management_form }}
         <hr>
-        <h3>Базова конфігурація для віджета</h3>
+        <h3>{% trans 'Basic configuration for the widget' %}</h3>
         {% for form in formset %}
             {{ form|crispy }}
         {% endfor %}
-        <button class="twitch-btn" type="submit">Створити</button>
+        <button class="twitch-btn" type="submit">{% trans 'Create' %}</button>
     </form>
 {% endblock %}
 

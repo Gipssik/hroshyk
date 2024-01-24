@@ -1,6 +1,7 @@
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 <div class="form-with-preview" hx-boost="true">
     <form action="#" method="post" hx-target=".form-with-preview" hx-swap="outerHTML">
@@ -9,17 +10,17 @@
         {% endif %}
         {% csrf_token %}
         <div class="submit-btn">
-            <button type="submit" class="twitch-btn">Зберегти</button>
-            <a class="simple-btn go-to-preview-btn" href="#preview-container">Перегляд</a>
+            <button type="submit" class="twitch-btn">{% trans 'Save' %}</button>
+            <a class="simple-btn go-to-preview-btn" href="#preview-container">{% trans 'Preview' %}</a>
         </div>
         {{ form|crispy }}
         <div class="submit-btn">
-            <button type="submit" class="twitch-btn">Зберегти</button>
+            <button type="submit" class="twitch-btn">{% trans 'Save' %}</button>
         </div>
     </form>
     <div class="vr"></div>
     <div class="preview-container" id="preview-container">
-        <h2>Попередній перегляд</h2>
+        <h2>{% trans 'Preview' %}</h2>
         <div class="preview">
             <iframe height="1000px" width="100%" src="{% url 'viewer_donation_page' object.page_link %}" frameborder="0"></iframe>
         </div>

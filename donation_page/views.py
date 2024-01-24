@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
 from donation_page.forms import DonationPageForm
@@ -27,7 +28,7 @@ class DonationPageView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         if not self.request.user.donation_page:
-            raise Http404("Сторінка не знайдена")
+            raise Http404
         return self.request.user.donation_page
 
     def get(self, request, *args, **kwargs):
@@ -42,5 +43,5 @@ class DonationPageView(LoginRequiredMixin, UpdateView):
         reset_current_target = request.POST.get("reset_current_target") == "on"
         if reset_current_target:
             self.object.reset_current_target()
-        messages.success(request, "Дані успішно оновлено")
+        messages.success(request, _("Data updated successfully"))
         return result

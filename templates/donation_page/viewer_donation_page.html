@@ -3,6 +3,7 @@
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
     {{ donation_page.page_title }}
@@ -33,7 +34,7 @@
                         </div>
                         <span class="progress-bar-min">0</span>
                         <span class="progress-bar-current">
-                        {{ donation_page.target_current_amount }} грн
+                        {{ donation_page.target_current_amount }} {% trans 'hrn.' %}
                         ({{ donation_page.target_current_amount|float_percentage:donation_page.target_amount|stringformat:".1f" }}%)
                     </span>
                         <span class="progress-bar-target">{{ donation_page.target_amount }}</span>

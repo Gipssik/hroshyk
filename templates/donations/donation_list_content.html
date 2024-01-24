@@ -1,12 +1,13 @@
 {% load crispy_forms_tags %}
 {% load crispy_forms_filters %}
 {% load static %}
+{% load i18n %}
 
 <div class="donations" hx-boost="true">
     <a class="collapse-button" data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="true" aria-controls="filters">
         <div class="arrow down"></div>
         <span>
-            Фільтрування
+            {% trans 'Filters' %}
         </span>
         <hr>
     </a>

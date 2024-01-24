@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 from donation_page.models import DonationPage
 
@@ -36,7 +37,7 @@ class DonationPageForm(ModelForm):
             "message_placeholder",
             "message_min_length",
             "message_max_length",
-            "viewer_pays_commision",
+            "viewer_pays_commission",
             "donate_button_text",
             "target_title",
             "target_amount",
@@ -51,8 +52,12 @@ class DonationPageForm(ModelForm):
                 "url_kwarg": "link",
             }
         ),
-        label="Посилання на сторінку",
+        label=_("Page link"),
         required=True,
         disabled=True,
     )
-    reset_current_target = forms.BooleanField(initial=False, required=False, label="Скинути зібрану суму")
+    reset_current_target = forms.BooleanField(
+        initial=False,
+        required=False,
+        label=_("Reset the collected amount"),
+    )

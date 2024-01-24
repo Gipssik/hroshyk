@@ -1,8 +1,9 @@
 {% load static %}
+{% load i18n %}
 
 <div class="widgets-container" hx-boost="true">
     <div class="widgets-header">
-        <h1>Віджети подяк</h1>
+        <h1>{% trans 'Donation widgets' %}</h1>
         <a class="simple-btn" href="{% url 'donation_widgets_create' %}">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -20,34 +21,34 @@
                     <div class="widget-buttons">
                         <div class="danger-btn"
                              hx-post="{% url 'donation_widgets_delete' donation_widget.pk %}"
-                             hx-confirm="Ви впевнені, що хочете видалити?"
+                             hx-confirm="{% trans 'Are you sure you want to remove?' %}"
                              hx-target="closest .widgets-container"
                              onclick="event.preventDefault(); event.stopPropagation()"
                         >
                             <i class="bi bi-trash" style="font-size: 18px;"></i>
                         </div>
                         <div class="simple-btn" data-token="{{ donation_widget.link_identifier }}">
-                            <i class="bi bi-files"></i>Посилання
+                            <i class="bi bi-files"></i>{% trans 'Link' %}
                         </div>
                     </div>
                 </div>
-                <span>Віджети налаштовано для діапазонів:</span>
+                <span>{% trans 'Widgets are configured for ranges' %}:</span>
                 <div class="widget-configs-ranges-container">
                     <div class="widget-configs-ranges">
                         {% if donation_widget.configs.all %}
                             {% for config in donation_widget.configs.all %}
                                 <div class="widget-config-range">
-                                    {{ config.min_amount }} - {{ config.max_amount }} грн
+                                    {{ config.min_amount }} - {{ config.max_amount }} {% trans 'hrn.' %}
                                 </div>
                             {% endfor %}
                         {% else %}
-                            <div class="widget-config-range">Ні для яких діапазонів, бо треба створити</div>
+                            <div class="widget-config-range">{% trans 'No ranges, because you need to configure them' %}</div>
                         {% endif %}
                     </div>
                 </div>
             </a>
         {% empty %}
-            <div>У вас немає віджетів.</div>
+            <div>{% trans "You don't have any widgets" %}.</div>
         {% endfor %}
 
     </div>
