@@ -14,7 +14,7 @@ from donations.utils import donation_add_validation
 
 class DonationsListView(LoginRequiredMixin, FilterView):
     model = Donation
-    paginate_by = 2
+    paginate_by = 25
     template_name = "donations/donation_list.html"
     context_object_name = "donations"
     ordering = "-created_at"

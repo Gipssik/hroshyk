@@ -42,6 +42,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "accounts.middlewares.AuthenticationMiddleware",
@@ -153,8 +154,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
-
-LANGUAGE_CODE = "en"
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
