@@ -175,6 +175,14 @@ msgstr "Сума менше ніж (включно)"
 msgid "Date"
 msgstr "Дата"
 
+#: donations/filters.py:51
+msgid "Search"
+msgstr "Пошук"
+
+#: donations/filters.py:53
+msgid "Reset"
+msgstr "Скинути"
+
 #: templates/cabinet.html:14 templates/utils/logo.html:3
 msgid "Hroshyk"
 msgstr "Грошик"
@@ -365,6 +373,3 @@ msgstr "Гучність диктора"
 #: widgets/views.py:69
 msgid "You cannot create more than 3 widgets"
 msgstr "Ви не можете створити більше 3-х віджетів"
-
-msgid "Copied"
-msgstr "Скопійовано"

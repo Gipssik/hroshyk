@@ -156,6 +156,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
+LANGUAGES = [
+    ("en", gettext_lazy("English")),
+    ("uk", gettext_lazy("Ukrainian")),
+]
 
 TIME_ZONE = "Europe/Kyiv"
 
