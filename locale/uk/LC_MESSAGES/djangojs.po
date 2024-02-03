@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-25 23:42+0200\n"
+"POT-Creation-Date: 2024-02-03 22:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
 #: static/js/donationPage.js:54
 msgid "hrn."
 msgstr "грн."
@@ -31,3 +32,11 @@ msgstr "Скопійовано"
 #: static/js/viewerDonationPage.js:8
 msgid "Send Hroshyk"
 msgstr "Надіслати Грошик"
+
+#: templates/base.html:44
+msgid "Yes"
+msgstr "Так"
+
+#: templates/base.html:45
+msgid "No"
+msgstr "Ні"

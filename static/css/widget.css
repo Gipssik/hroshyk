@@ -74,6 +74,12 @@
     max-width: 700px;
 }
 
+.widget-header-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .update-widget-container {
     display: flex;
     flex-direction: column;
@@ -116,6 +122,31 @@
 
 .donation-config-alert-container h1 {
     word-break: break-word;
+}
+
+.widget-config-header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.widget-config-header-container h1 {
+    text-align: center;
+    flex: 1;
+}
+
+.widget-config-header-container a {
+    color: #9146FF;
+}
+
+.create-widget-config-container{
+    max-width: 1000px;
+}
+
+.create-widget-config-container > div {
+    flex-basis: 50%;
+    max-width: 50%;
 }
 
 .update-widget-config-container {

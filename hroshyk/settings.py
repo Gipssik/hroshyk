@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import environ
+from django.contrib import messages
 from django.utils.translation import gettext_lazy
 
 env = environ.Env()
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "django_filters",
     "django_htmx",
+    "htmx_messages",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
+    "htmx_messages.middleware.HtmxMessageMiddleware",
 ]
 
 DEBUG_TOOLBAR_PANELS = [
@@ -123,7 +126,13 @@ CLOUDINARY_STORAGE = {
     "API_SECRET": env("CLOUDINARY_API_SECRET"),
 }
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+MESSAGE_TAGS = {
+    messages.DEBUG: "bg-light",
+    messages.INFO: "text-white bg-primary",
+    messages.SUCCESS: "text-white bg-success",
+    messages.WARNING: "text-dark bg-warning",
+    messages.ERROR: "text-white bg-danger",
+}
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",

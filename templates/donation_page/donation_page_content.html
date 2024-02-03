@@ -5,9 +5,6 @@
 
 <div class="form-with-preview" hx-boost="true">
     <form action="#" method="post" hx-target=".form-with-preview" hx-swap="outerHTML">
-        {% if messages %}
-            {% include 'utils/messages.html' %}
-        {% endif %}
         {% csrf_token %}
         <div class="submit-btn">
             <button type="submit" class="twitch-btn">{% trans 'Save' %}</button>
@@ -25,5 +22,4 @@
             <iframe height="1000px" width="100%" src="{% url 'viewer_donation_page' object.page_link %}" frameborder="0"></iframe>
         </div>
     </div>
-
 </div>

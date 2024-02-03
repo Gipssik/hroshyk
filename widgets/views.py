@@ -1,17 +1,18 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseForbidden
+from django.db.models import Prefetch
+from django.http import HttpResponseForbidden, Http404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext
 from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
-from django.views.generic.list import MultipleObjectMixin
+from django_htmx.http import HttpResponseLocation
 
 from widgets.forms import (
     DonationWidgetForm,
     CreateDonationWidgetForm,
     DonationWidgetConfigFormSet,
-    DonationWidgetConfigUpdateForm,
+    DonationWidgetConfigForm,
 )
 from widgets.models import DonationWidget, DonationWidgetConfig
 
@@ -36,7 +37,7 @@ class DonationWidgetListView(LoginRequiredMixin, ListView):
 class DonationWidgetCreateView(LoginRequiredMixin, FormView):
     template_name = "widgets/donation_widget/donation_widget_create.html"
     form_class = CreateDonationWidgetForm
-    success_url = "donation_widgets_list"
+    success_url = reverse_lazy("donation_widgets_list")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,11 +65,11 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
 
         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         if request.user.donation_widgets.count() >= 3:
-            messages.error(request, _("You cannot create more than 3 widgets"))
-            return redirect("donation_widgets_list")
-        return super().post(request, *args, **kwargs)
+            messages.error(request, gettext("You cannot create more than 3 widgets"))
+            return HttpResponseForbidden()
+        return super().get(request, *args, **kwargs)
 
 
 class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
@@ -78,38 +79,76 @@ class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
     form_class = DonationWidgetForm
 
     def get_queryset(self):
-        return self.model.objects.prefetch_related("configs")
+        return self.model.objects.prefetch_related(
+            Prefetch("configs", queryset=DonationWidgetConfig.objects.order_by("-id")),
+        )
 
     def form_valid(self, form):
         if self.object.user != self.request.user:
             return HttpResponseForbidden()
         self.object = form.save()
+        messages.success(self.request, gettext("Data updated successfully"))
         return self.render_to_response(self.get_context_data(form=form, donation_widget=self.object))
 
 
-class DonationWidgetDeleteView(LoginRequiredMixin, MultipleObjectMixin, DeleteView):
+class DonationWidgetDeleteView(LoginRequiredMixin, DeleteView):
     model = DonationWidget
     success_url = reverse_lazy("donation_widgets_list")
-    context_object_name = DonationWidgetListView.context_object_name
-    template_name = "widgets/donation_widget/donation_widget_list_content.html"
-
-    def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user).order_by("id")
 
     def form_valid(self, form):
         if self.object.user != self.request.user:
             return HttpResponseForbidden()
         self.object.delete()
-        object_list = self.get_queryset()
-        context = self.get_context_data(object_list=object_list)
-        return self.render_to_response(context)
+        return HttpResponseLocation(self.success_url, target="main")
+
+
+class DonationWidgetConfigCreateView(LoginRequiredMixin, FormView):
+    form_class = DonationWidgetConfigForm
+    template_name = "widgets/donation_widget/donation_widget_config_create.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        donation_widget_id = kwargs.get("donation_widget_id") or int(self.request.GET.get("donation_widget_id"))
+        if not donation_widget_id or not DonationWidget.objects.filter(pk=donation_widget_id).exists():
+            return Http404()
+        context["donation_widget_id"] = donation_widget_id
+        return context
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        donation_widget_id = int(self.request.GET.get("donation_widget_id"))
+        if not donation_widget_id or not DonationWidget.objects.filter(pk=donation_widget_id).exists():
+            return Http404()
+        self.object.donation_widget_id = donation_widget_id
+        self.object.save()
+        return redirect("donation_widgets_config_update", pk=self.object.pk)
 
 
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):
     model = DonationWidgetConfig
-    form_class = DonationWidgetConfigUpdateForm
+    form_class = DonationWidgetConfigForm
     context_object_name = "donation_widget_config"
     template_name = "widgets/donation_widget/donation_widget_config_update.html"
+
+    def form_valid(self, form):
+        if self.object.donation_widget.user != self.request.user:
+            return HttpResponseForbidden()
+        self.object = form.save()
+        messages.success(self.request, gettext("Data updated successfully"))
+        return self.render_to_response(self.get_context_data(form=form, donation_widget_config=self.object))
+
+
+class DonationWidgetConfigDeleteView(LoginRequiredMixin, DeleteView):
+    model = DonationWidgetConfig
+
+    def form_valid(self, form):
+        if self.object.donation_widget.user != self.request.user:
+            return HttpResponseForbidden()
+        donation_widget_id = self.object.donation_widget_id
+        self.object.delete()
+        messages.success(self.request, gettext("Data deleted successfully"))
+        success_url = reverse_lazy("donation_widgets_update", kwargs={"pk": donation_widget_id})
+        return HttpResponseLocation(success_url)
 
 
 class DonationWidgetLinkView(RedirectView):

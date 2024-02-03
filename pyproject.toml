@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hroshyk"
-version = "0.3.0"
+version = "0.3.1"
 description = "Ukrainian donation platform"
 authors = ["Gipss <gissa.dmtr@gmail.com>"]
 
@@ -21,6 +21,7 @@ Pillow = "^9.5.0"
 django-cleanup = "^8.0.0"
 django-jazzmin = "^2.6.0"
 django-htmx = "^1.16.0"
+django-htmx-messages-framework = {git = "https://github.com/bblanchon/django-htmx-messages-framework.git", rev = "hx-trigger"}
 
 [tool.poetry.dev-dependencies]
 

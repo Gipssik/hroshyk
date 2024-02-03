@@ -10,9 +10,6 @@
             </svg>
         </a>
     </div>
-    {% if messages %}
-        {% include 'utils/messages.html' %}
-    {% endif %}
     <div class="widget-block">
         {% for donation_widget in donation_widgets %}
             <a href="{% url 'donation_widgets_update' donation_widget.pk %}" class="widget-unit">
@@ -53,4 +50,3 @@
 
     </div>
 </div>
-

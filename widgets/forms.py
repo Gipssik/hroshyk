@@ -77,7 +77,7 @@ class DonationWidgetForm(ModelForm):
     )
 
 
-class DonationWidgetConfigUpdateForm(ModelForm):
+class DonationWidgetConfigForm(ModelForm):
     class Meta:
         model = DonationWidgetConfig
         fields = donation_widget_config_fields

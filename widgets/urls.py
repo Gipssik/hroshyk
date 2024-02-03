@@ -6,6 +6,8 @@ from widgets.views import (
     DonationWidgetUpdateView,
     DonationWidgetCreateView,
     DonationWidgetDeleteView,
+    DonationWidgetConfigCreateView,
+    DonationWidgetConfigDeleteView,
 )
 
 urlpatterns = [
@@ -18,8 +20,18 @@ urlpatterns = [
         name="donation_widgets_update",
     ),
     path(
+        "donation-widgets/config/new/",
+        DonationWidgetConfigCreateView.as_view(),
+        name="donation_widgets_config_create",
+    ),
+    path(
         "donation-widgets/config/<int:pk>/",
         DonationWidgetConfigUpdateView.as_view(),
         name="donation_widgets_config_update",
+    ),
+    path(
+        "donation-widgets/config/delete/<int:pk>/",
+        DonationWidgetConfigDeleteView.as_view(),
+        name="donation_widgets_config_delete",
     ),
 ]

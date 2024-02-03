@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 02:36+0200\n"
+"POT-Creation-Date: 2024-02-03 22:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
 #: accounts/models.py:12
 msgid "Email address"
 msgstr "Електронна адреса"
@@ -158,7 +159,7 @@ msgstr "Сума цілі збору"
 msgid "Donation target current amount"
 msgstr "Поточна сума цілі збору"
 
-#: donation_page/views.py:46
+#: donation_page/views.py:46 widgets/views.py:90 widgets/views.py:137
 msgid "Data updated successfully"
 msgstr "Дані успішно оновлено"
 
@@ -175,13 +176,13 @@ msgstr "Сума менше ніж (включно)"
 msgid "Date"
 msgstr "Дата"
 
-#: donations/filters.py:51
-msgid "Search"
-msgstr "Пошук"
+#: hroshyk/settings.py:169
+msgid "English"
+msgstr ""
 
-#: donations/filters.py:53
-msgid "Reset"
-msgstr "Скинути"
+#: hroshyk/settings.py:170
+msgid "Ukrainian"
+msgstr "Українська"
 
 #: templates/cabinet.html:14 templates/utils/logo.html:3
 msgid "Hroshyk"
@@ -191,18 +192,18 @@ msgstr "Грошик"
 msgid "Cabinet"
 msgstr "Кабінет"
 
-#: templates/donation_page/donation_page_content.html:13
-#: templates/donation_page/donation_page_content.html:18
+#: templates/donation_page/donation_page_content.html:10
+#: templates/donation_page/donation_page_content.html:15
 msgid "Save"
 msgstr "Зберегти"
 
-#: templates/donation_page/donation_page_content.html:14
-#: templates/donation_page/donation_page_content.html:23
+#: templates/donation_page/donation_page_content.html:11
+#: templates/donation_page/donation_page_content.html:20
 msgid "Preview"
 msgstr "Попередній перегляд"
 
 #: templates/donation_page/viewer_donation_page.html:37
-#: templates/widgets/donation_widget/donation_widget_list_content.html:41
+#: templates/widgets/donation_widget/donation_widget_list_content.html:38
 msgid "hrn."
 msgstr "грн."
 
@@ -234,19 +235,19 @@ msgstr "Фото профілю"
 msgid "Sign out"
 msgstr "Вийти"
 
-#: templates/nav/pagination.html:7
+#: templates/nav/pagination.html:13
 msgid "FirstPageNumeral"
 msgstr "Перша"
 
-#: templates/nav/pagination.html:10
+#: templates/nav/pagination.html:22
 msgid "PreviousPageNumeral"
 msgstr "Попередня"
 
-#: templates/nav/pagination.html:28
+#: templates/nav/pagination.html:58
 msgid "NextPageNumeral"
 msgstr "Наступна"
 
-#: templates/nav/pagination.html:31
+#: templates/nav/pagination.html:67
 msgid "LastPageNumeral"
 msgstr "Остання"
 
@@ -262,9 +263,33 @@ msgstr "Віджети"
 msgid "Home page"
 msgstr "Головна"
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:11
+#: templates/widgets/donation_widget/donation_widget_config_create.html:12
+msgid "Create donation widget config"
+msgstr "Створити конфігурацію віджету"
+
+#: templates/widgets/donation_widget/donation_widget_config_create.html:18
+#: templates/widgets/donation_widget/donation_widget_create.html:18
+msgid "Create"
+msgstr "Створити"
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:12
+msgid "Update donation widget config"
+msgstr "Оновити конфігурацію віджету"
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:18
 msgid "Update"
 msgstr "Оновити"
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:21
+#: templates/widgets/donation_widget/donation_widget_list_content.html:21
+#: templates/widgets/donation_widget/donation_widget_update.html:17
+msgid "Are you sure you want to remove?"
+msgstr "Ви впевнені, що хочете видалити?"
+
+#: templates/widgets/donation_widget/donation_widget_config_update.html:23
+#: templates/widgets/donation_widget/donation_widget_update.html:19
+msgid "Delete"
+msgstr "Видалити"
 
 #: templates/widgets/donation_widget/donation_widget_create.html:9
 msgid "Widget creation"
@@ -274,31 +299,23 @@ msgstr "Створення віджету"
 msgid "Basic configuration for the widget"
 msgstr "Базова конфігурація віджету"
 
-#: templates/widgets/donation_widget/donation_widget_create.html:18
-msgid "Create"
-msgstr "Створити"
-
 #: templates/widgets/donation_widget/donation_widget_list_content.html:6
 msgid "Donation widgets"
 msgstr "Віджети подяк"
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:24
-msgid "Are you sure you want to remove?"
-msgstr "Ви впевнені, що хочете видалити?"
-
-#: templates/widgets/donation_widget/donation_widget_list_content.html:31
+#: templates/widgets/donation_widget/donation_widget_list_content.html:28
 msgid "Link"
 msgstr "Посилання"
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:35
+#: templates/widgets/donation_widget/donation_widget_list_content.html:32
 msgid "Widgets are configured for ranges"
 msgstr "Віджети налаштовано для діапазонів"
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:45
+#: templates/widgets/donation_widget/donation_widget_list_content.html:42
 msgid "No ranges, because you need to configure them"
 msgstr "Ні для яких діапазонів, бо треба створити"
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:51
+#: templates/widgets/donation_widget/donation_widget_list_content.html:48
 msgid "You don't have any widgets"
 msgstr "У вас немає віджетів"
 
@@ -370,6 +387,16 @@ msgstr "Гучність звуку"
 msgid "Speaker volume"
 msgstr "Гучність диктора"
 
-#: widgets/views.py:69
+#: widgets/views.py:70
 msgid "You cannot create more than 3 widgets"
 msgstr "Ви не можете створити більше 3-х віджетів"
+
+#: widgets/views.py:149
+msgid "Data deleted successfully"
+msgstr "Дані видалені оновлено"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Reset"
+msgstr "Скинути"

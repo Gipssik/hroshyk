@@ -1,0 +1,22 @@
+{% extends 'cabinet.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block cabinet-content %}
+    <div class="widget-config-header-container" hx-boost="true">
+        <a href="{% url 'donation_widgets_update' donation_widget_id %}" style="font-size: 30px">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <h1>{% trans 'Create donation widget config' %}</h1>
+    </div>
+    <div class="create-widget-config-container" hx-boost="true">
+        <form method="post" enctype="multipart/form-data">
+            {{ form|crispy }}
+            <div class="submit-btn">
+                <button class="twitch-btn" type="submit">{% trans 'Create' %}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

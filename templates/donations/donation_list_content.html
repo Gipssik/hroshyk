@@ -7,8 +7,8 @@
     <a class="collapse-button" data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="true" aria-controls="filters">
         <div class="arrow down"></div>
         <span>
-            {% trans 'Filters' %}
-        </span>
+        {% trans 'Filters' %}
+    </span>
         <hr>
     </a>
     <form hx-target="main" id="filters" class="donations-form collapse show" action="{% url 'donations' %}" method="GET">
