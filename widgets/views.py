@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Prefetch
 from django.http import HttpResponseForbidden, Http404
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
 from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
@@ -39,6 +38,16 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
     form_class = CreateDonationWidgetForm
     success_url = reverse_lazy("donation_widgets_list")
 
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_create_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_create.html"
+        if request.user.donation_widgets.count() >= 3:
+            messages.error(request, gettext("You cannot create more than 3 widgets"))
+            return HttpResponseForbidden()
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.POST:
@@ -61,15 +70,9 @@ class DonationWidgetCreateView(LoginRequiredMixin, FormView):
                 instance.donation_widget = donation_widget
                 instance.save()
 
-            return redirect(self.get_success_url())
+            return HttpResponseLocation(self.get_success_url(), target="main")
 
         return self.render_to_response(self.get_context_data(form=form, formset=formset))
-
-    def get(self, request, *args, **kwargs):
-        if request.user.donation_widgets.count() >= 3:
-            messages.error(request, gettext("You cannot create more than 3 widgets"))
-            return HttpResponseForbidden()
-        return super().get(request, *args, **kwargs)
 
 
 class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
@@ -77,6 +80,13 @@ class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
     model = DonationWidget
     context_object_name = "donation_widget"
     form_class = DonationWidgetForm
+
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_update_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_update.html"
+        return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
         return self.model.objects.prefetch_related(
@@ -88,6 +98,12 @@ class DonationWidgetUpdateView(LoginRequiredMixin, UpdateView):
             return HttpResponseForbidden()
         self.object = form.save()
         messages.success(self.request, gettext("Data updated successfully"))
+
+        if self.request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_update_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_update.html"
+
         return self.render_to_response(self.get_context_data(form=form, donation_widget=self.object))
 
 
@@ -106,6 +122,13 @@ class DonationWidgetConfigCreateView(LoginRequiredMixin, FormView):
     form_class = DonationWidgetConfigForm
     template_name = "widgets/donation_widget/donation_widget_config_create.html"
 
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_config_create_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_config_create.html"
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         donation_widget_id = kwargs.get("donation_widget_id") or int(self.request.GET.get("donation_widget_id"))
@@ -121,7 +144,8 @@ class DonationWidgetConfigCreateView(LoginRequiredMixin, FormView):
             return Http404()
         self.object.donation_widget_id = donation_widget_id
         self.object.save()
-        return redirect("donation_widgets_config_update", pk=self.object.pk)
+        success_url = reverse_lazy("donation_widgets_config_update", kwargs={"pk": self.object.pk})
+        return HttpResponseLocation(success_url, target="main")
 
 
 class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):
@@ -130,11 +154,24 @@ class DonationWidgetConfigUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = "donation_widget_config"
     template_name = "widgets/donation_widget/donation_widget_config_update.html"
 
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_config_update_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_config_update.html"
+        return super().get(request, *args, **kwargs)
+
     def form_valid(self, form):
         if self.object.donation_widget.user != self.request.user:
             return HttpResponseForbidden()
         self.object = form.save()
         messages.success(self.request, gettext("Data updated successfully"))
+
+        if self.request.htmx:
+            self.template_name = "widgets/donation_widget/donation_widget_config_update_content.html"
+        else:
+            self.template_name = "widgets/donation_widget/donation_widget_config_update.html"
+
         return self.render_to_response(self.get_context_data(form=form, donation_widget_config=self.object))
 
 
@@ -148,7 +185,7 @@ class DonationWidgetConfigDeleteView(LoginRequiredMixin, DeleteView):
         self.object.delete()
         messages.success(self.request, gettext("Data deleted successfully"))
         success_url = reverse_lazy("donation_widgets_update", kwargs={"pk": donation_widget_id})
-        return HttpResponseLocation(success_url)
+        return HttpResponseLocation(success_url, target="main")
 
 
 class DonationWidgetLinkView(RedirectView):

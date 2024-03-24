@@ -87,6 +87,11 @@ var copyLinkFieldToClipboard = (id) => {
         btn.style.maxWidth = 'initial'
         btn.innerHTML = btnHtml
     }, 3000)
+
+    document.body.addEventListener('htmx:beforeRequest', (event) => {
+        btn.style.maxWidth = 'initial'
+        btn.innerHTML = btnHtml
+    })
 }
 
 var copyWidgetLinkToClipboardFromButton = (btn, token) => {
@@ -99,9 +104,14 @@ var copyWidgetLinkToClipboardFromButton = (btn, token) => {
         btn.style.maxWidth = 'initial'
         btn.innerHTML = btnHtml
     }, 3000)
+
+    document.body.addEventListener('htmx:beforeRequest', (event) => {
+        btn.style.maxWidth = 'initial'
+        btn.innerHTML = btnHtml
+    })
 }
 
-document.addEventListener('htmx:pushedIntoHistory', (event) => {
+document.body.addEventListener('htmx:afterRequest', (event) => {
     addToggleCollapseBtnEvent()
     highlightCurrentSidebarItem()
     updateLinkFieldInputs()

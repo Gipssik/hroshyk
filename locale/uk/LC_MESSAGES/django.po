@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-03 22:39+0200\n"
+"POT-Creation-Date: 2024-03-24 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,7 +159,7 @@ msgstr "Сума цілі збору"
 msgid "Donation target current amount"
 msgstr "Поточна сума цілі збору"
 
-#: donation_page/views.py:46 widgets/views.py:90 widgets/views.py:137
+#: donation_page/views.py:46 widgets/views.py:101 widgets/views.py:168
 msgid "Data updated successfully"
 msgstr "Дані успішно оновлено"
 
@@ -204,6 +204,7 @@ msgstr "Попередній перегляд"
 
 #: templates/donation_page/viewer_donation_page.html:37
 #: templates/widgets/donation_widget/donation_widget_list_content.html:38
+#: templates/widgets/donation_widget/donation_widget_update_content.html:41
 msgid "hrn."
 msgstr "грн."
 
@@ -263,39 +264,40 @@ msgstr "Віджети"
 msgid "Home page"
 msgstr "Головна"
 
-#: templates/widgets/donation_widget/donation_widget_config_create.html:12
+#: templates/widgets/donation_widget/donation_widget_config_create_content.html:10
 msgid "Create donation widget config"
 msgstr "Створити конфігурацію віджету"
 
-#: templates/widgets/donation_widget/donation_widget_config_create.html:18
-#: templates/widgets/donation_widget/donation_widget_create.html:18
+#: templates/widgets/donation_widget/donation_widget_config_create_content.html:16
+#: templates/widgets/donation_widget/donation_widget_create_content.html:16
 msgid "Create"
 msgstr "Створити"
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:12
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:10
 msgid "Update donation widget config"
 msgstr "Оновити конфігурацію віджету"
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:18
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:16
+#: templates/widgets/donation_widget/donation_widget_update_content.html:12
 msgid "Update"
 msgstr "Оновити"
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:21
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:19
 #: templates/widgets/donation_widget/donation_widget_list_content.html:21
-#: templates/widgets/donation_widget/donation_widget_update.html:17
+#: templates/widgets/donation_widget/donation_widget_update_content.html:15
 msgid "Are you sure you want to remove?"
 msgstr "Ви впевнені, що хочете видалити?"
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:23
-#: templates/widgets/donation_widget/donation_widget_update.html:19
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:21
+#: templates/widgets/donation_widget/donation_widget_update_content.html:17
 msgid "Delete"
 msgstr "Видалити"
 
-#: templates/widgets/donation_widget/donation_widget_create.html:9
+#: templates/widgets/donation_widget/donation_widget_create_content.html:7
 msgid "Widget creation"
 msgstr "Створення віджету"
 
-#: templates/widgets/donation_widget/donation_widget_create.html:14
+#: templates/widgets/donation_widget/donation_widget_create_content.html:12
 msgid "Basic configuration for the widget"
 msgstr "Базова конфігурація віджету"
 
@@ -318,6 +320,22 @@ msgstr "Ні для яких діапазонів, бо треба створи�
 #: templates/widgets/donation_widget/donation_widget_list_content.html:48
 msgid "You don't have any widgets"
 msgstr "У вас немає віджетів"
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:8
+msgid "Update widget"
+msgstr "Оновити віджет"
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:24
+msgid "Widget's configurations"
+msgstr "Конфігурації віджету"
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:41
+msgid "Range"
+msgstr "Діапазон"
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:45
+msgid "There are no configurations for this widget."
+msgstr "Немає конфігурацій для цього віджету."
 
 #: widgets/forms.py:45 widgets/forms.py:46 widgets/models.py:13
 msgid "Widget name"
@@ -387,11 +405,11 @@ msgstr "Гучність звуку"
 msgid "Speaker volume"
 msgstr "Гучність диктора"
 
-#: widgets/views.py:70
+#: widgets/views.py:48
 msgid "You cannot create more than 3 widgets"
 msgstr "Ви не можете створити більше 3-х віджетів"
 
-#: widgets/views.py:149
+#: widgets/views.py:186
 msgid "Data deleted successfully"
 msgstr "Дані видалені оновлено"
 

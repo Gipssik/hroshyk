@@ -5,43 +5,5 @@
 {% load i18n %}
 
 {% block cabinet-content %}
-    <div class="update-widget-container" hx-boost="true">
-        <div>
-            <h1>Оновити віджет "{{ donation_widget.name }}"</h1>
-            <form class="update-widget-form" method="post" enctype="multipart/form-data">
-                {{ form|crispy }}
-                <div class="submit-btn">
-                    <button class="twitch-btn" type="submit">Оновити</button>
-                    <button class="simple-btn danger-btn"
-                       hx-post="{% url 'donation_widgets_delete' donation_widget.pk %}"
-                       hx-confirm="{% trans 'Are you sure you want to remove?' %}"
-                    >
-                        {% trans 'Delete' %}
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div>
-            <div class="widget-header-container">
-                <h2>Конфігурації для віджета</h2>
-                <a class="simple-btn" href="{% url 'donation_widgets_config_create' %}?donation_widget_id={{ donation_widget.pk }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </a>
-            </div>
-            <hr>
-            <div class="donation-configs-container">
-                {% for config in donation_widget.configs.all %}
-                    <a class="donation-config-alert-container" href="{% url 'donation_widgets_config_update' config.pk %}">
-                        <h5>Діапазон <strong>{{ config.min_amount }} - {{ config.max_amount }}</strong> грн</h5>
-                        {% include 'widgets/donation_widget/donation_alert.html' with config=config %}
-                    </a>
-                {% empty %}
-                    <div>Немає конфігурацій для цього віджета.</div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
+    {% include 'widgets/donation_widget/donation_widget_update_content.html' %}
 {% endblock %}

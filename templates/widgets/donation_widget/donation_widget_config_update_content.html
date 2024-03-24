@@ -1,0 +1,26 @@
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+<div class="widget-config-header-container" hx-boost="true">
+    <a href="{% url 'donation_widgets_update' donation_widget_config.donation_widget_id %}" hx-target="main" style="font-size: 30px">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    <h1>{% trans 'Update donation widget config' %}</h1>
+</div>
+<div class="update-widget-config-container" hx-boost="true">
+    <form method="post" enctype="multipart/form-data" hx-target="main">
+        {{ form|crispy }}
+        <div class="submit-btn">
+            <button class="twitch-btn" type="submit">{% trans 'Update' %}</button>
+            <button class="simple-btn danger-btn"
+                    hx-post="{% url 'donation_widgets_config_delete' donation_widget_config.pk %}"
+                    hx-confirm="{% trans 'Are you sure you want to remove?' %}"
+            >
+                {% trans 'Delete' %}
+            </button>
+        </div>
+    </form>
+    {% include 'widgets/donation_widget/donation_alert.html' with config=donation_widget_config %}
+</div>

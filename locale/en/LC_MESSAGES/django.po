@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 02:49+0200\n"
+"POT-Creation-Date: 2024-03-24 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Donation target current amount"
 msgstr ""
 
-#: donation_page/views.py:46
+#: donation_page/views.py:46 widgets/views.py:101 widgets/views.py:168
 msgid "Data updated successfully"
 msgstr ""
 
@@ -172,6 +172,14 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+#: hroshyk/settings.py:169
+msgid "English"
+msgstr ""
+
+#: hroshyk/settings.py:170
+msgid "Ukrainian"
+msgstr ""
+
 #: templates/cabinet.html:14 templates/utils/logo.html:3
 msgid "Hroshyk"
 msgstr ""
@@ -180,18 +188,19 @@ msgstr ""
 msgid "Cabinet"
 msgstr ""
 
-#: templates/donation_page/donation_page_content.html:13
-#: templates/donation_page/donation_page_content.html:18
+#: templates/donation_page/donation_page_content.html:10
+#: templates/donation_page/donation_page_content.html:15
 msgid "Save"
 msgstr ""
 
-#: templates/donation_page/donation_page_content.html:14
-#: templates/donation_page/donation_page_content.html:23
+#: templates/donation_page/donation_page_content.html:11
+#: templates/donation_page/donation_page_content.html:20
 msgid "Preview"
 msgstr ""
 
 #: templates/donation_page/viewer_donation_page.html:37
-#: templates/widgets/donation_widget/donation_widget_list_content.html:41
+#: templates/widgets/donation_widget/donation_widget_list_content.html:38
+#: templates/widgets/donation_widget/donation_widget_update_content.html:41
 msgid "hrn."
 msgstr ""
 
@@ -223,19 +232,19 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
-#: templates/nav/pagination.html:7
+#: templates/nav/pagination.html:13
 msgid "FirstPageNumeral"
 msgstr "First"
 
-#: templates/nav/pagination.html:10
+#: templates/nav/pagination.html:22
 msgid "PreviousPageNumeral"
 msgstr "Previous"
 
-#: templates/nav/pagination.html:28
+#: templates/nav/pagination.html:58
 msgid "NextPageNumeral"
 msgstr "Next"
 
-#: templates/nav/pagination.html:31
+#: templates/nav/pagination.html:67
 msgid "LastPageNumeral"
 msgstr "Last"
 
@@ -251,44 +260,77 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_config_update.html:11
+#: templates/widgets/donation_widget/donation_widget_config_create_content.html:10
+msgid "Create donation widget config"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_config_create_content.html:16
+#: templates/widgets/donation_widget/donation_widget_create_content.html:16
+msgid "Create"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:10
+msgid "Update donation widget config"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:16
+#: templates/widgets/donation_widget/donation_widget_update_content.html:12
 msgid "Update"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_create.html:9
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:19
+#: templates/widgets/donation_widget/donation_widget_list_content.html:21
+#: templates/widgets/donation_widget/donation_widget_update_content.html:15
+msgid "Are you sure you want to remove?"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_config_update_content.html:21
+#: templates/widgets/donation_widget/donation_widget_update_content.html:17
+msgid "Delete"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_create_content.html:7
 msgid "Widget creation"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_create.html:14
+#: templates/widgets/donation_widget/donation_widget_create_content.html:12
 msgid "Basic configuration for the widget"
-msgstr ""
-
-#: templates/widgets/donation_widget/donation_widget_create.html:18
-msgid "Create"
 msgstr ""
 
 #: templates/widgets/donation_widget/donation_widget_list_content.html:6
 msgid "Donation widgets"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:24
-msgid "Are you sure you want to remove?"
-msgstr ""
-
-#: templates/widgets/donation_widget/donation_widget_list_content.html:31
+#: templates/widgets/donation_widget/donation_widget_list_content.html:28
 msgid "Link"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:35
+#: templates/widgets/donation_widget/donation_widget_list_content.html:32
 msgid "Widgets are configured for ranges"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:45
+#: templates/widgets/donation_widget/donation_widget_list_content.html:42
 msgid "No ranges, because you need to configure them"
 msgstr ""
 
-#: templates/widgets/donation_widget/donation_widget_list_content.html:51
+#: templates/widgets/donation_widget/donation_widget_list_content.html:48
 msgid "You don't have any widgets"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:8
+msgid "Update widget"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:24
+msgid "Widget's configurations"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:41
+msgid "Range"
+msgstr ""
+
+#: templates/widgets/donation_widget/donation_widget_update_content.html:45
+msgid "There are no configurations for this widget."
 msgstr ""
 
 #: widgets/forms.py:45 widgets/forms.py:46 widgets/models.py:13
@@ -359,6 +401,10 @@ msgstr ""
 msgid "Speaker volume"
 msgstr ""
 
-#: widgets/views.py:69
+#: widgets/views.py:48
 msgid "You cannot create more than 3 widgets"
+msgstr ""
+
+#: widgets/views.py:186
+msgid "Data deleted successfully"
 msgstr ""

@@ -21,9 +21,10 @@
     <main>
         {% block cabinet-content %}{% endblock %}
     </main>
+    {% include 'toasts.html' %}
 {% endblock %}
 
 {% block extra_js %}
-    {{ block.super }}
     <script src="{% static 'js/donationPage.js' %}" defer></script>
+    <script src="{% static 'js/toasts.js' %}"></script>
 {% endblock %}
