@@ -5,7 +5,7 @@ from django.views.decorators.http import last_modified
 from django.views.i18n import JavaScriptCatalog
 
 from accounts.views import HomeView
-from widgets.views import DonationWidgetLinkView
+from widgets.views import DonationAlertView
 
 last_modified_date = timezone.now()
 
@@ -16,11 +16,7 @@ urlpatterns = [
         last_modified(lambda req, **kw: last_modified_date)(JavaScriptCatalog.as_view()),
         name="javascript-catalog",
     ),
-    path(
-        "user-widgets/<str:link_identifier>/",
-        DonationWidgetLinkView.as_view(),
-        name="donation_widgets_link",
-    ),
+    path("user-widgets/<str:widget_identifier>/", DonationAlertView.as_view(), name="donation_alert"),
     path("", HomeView.as_view(), name="home"),
     path("", include("donations.urls")),
     path("twitch-auth/", include("django_twitch_auth.urls")),

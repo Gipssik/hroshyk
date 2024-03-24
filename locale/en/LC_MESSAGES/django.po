@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 18:19+0200\n"
+"POT-Creation-Date: 2024-03-25 00:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Donation target current amount"
 msgstr ""
 
-#: donation_page/views.py:46 widgets/views.py:101 widgets/views.py:168
+#: donation_page/views.py:46 widgets/views.py:104 widgets/views.py:172
 msgid "Data updated successfully"
 msgstr ""
 
@@ -170,6 +170,10 @@ msgstr ""
 #: donations/filters.py:32 templates/donations/donation_detail_content.html:14
 #: templates/donations/donation_list_table.html:10
 msgid "Date"
+msgstr ""
+
+#: donations/models.py:12
+msgid "Shown"
 msgstr ""
 
 #: hroshyk/settings.py:169
@@ -401,10 +405,10 @@ msgstr ""
 msgid "Speaker volume"
 msgstr ""
 
-#: widgets/views.py:48
+#: widgets/views.py:51
 msgid "You cannot create more than 3 widgets"
 msgstr ""
 
-#: widgets/views.py:186
+#: widgets/views.py:190
 msgid "Data deleted successfully"
 msgstr ""

@@ -39,7 +39,7 @@
                    href="{% url 'donation_widgets_config_update' config.pk %}"
                 >
                     <h5>{% trans "Range" %} <strong>{{ config.min_amount }} - {{ config.max_amount }}</strong> {% trans "hrn." %}</h5>
-                    {% include 'widgets/donation_widget/donation_alert.html' with config=config %}
+                    {% include 'widgets/donation_widget/donation_alert_content.html' with config=config %}
                 </a>
             {% empty %}
                 <div>{% trans "There are no configurations for this widget." %}</div>

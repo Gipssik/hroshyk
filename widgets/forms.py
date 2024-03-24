@@ -67,8 +67,8 @@ class DonationWidgetForm(ModelForm):
             attrs={
                 "class": "form-control",
                 "secret": True,
-                "url_for": "donation_widgets_link",
-                "url_kwarg": "link_identifier",
+                "url_for": "donation_alert",
+                "url_kwarg": "widget_identifier",
             }
         ),
         label=_("Widget link"),

@@ -9,6 +9,7 @@ class Donation(models.Model):
     nickname = models.CharField(max_length=128, verbose_name=_("Nickname"))
     amount = models.IntegerField(verbose_name=_("Amount"))
     message = models.TextField(verbose_name=_("Message"), null=True, blank=True)
+    shown = models.BooleanField(default=False, verbose_name=_("Shown"))
     streamer = models.ForeignKey(Streamer, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

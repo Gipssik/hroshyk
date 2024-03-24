@@ -1,12 +1,16 @@
+from functools import reduce
+
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Prefetch
-from django.http import HttpResponseForbidden, Http404
+from django.db.models import Prefetch, Q
+from django.http import HttpResponseForbidden, Http404, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
-from django.views.generic import ListView, UpdateView, RedirectView, FormView, DeleteView
+from django.shortcuts import render
+from django.views.generic import ListView, UpdateView, FormView, DeleteView, DetailView
 from django_htmx.http import HttpResponseLocation
 
+from donations.models import Donation
 from widgets.forms import (
     DonationWidgetForm,
     CreateDonationWidgetForm,
@@ -188,5 +192,47 @@ class DonationWidgetConfigDeleteView(LoginRequiredMixin, DeleteView):
         return HttpResponseLocation(success_url, target="main")
 
 
-class DonationWidgetLinkView(RedirectView):
-    pattern_name = "donation_widgets_update"
+class DonationAlertView(DetailView):
+    model = DonationWidget
+    template_name = "widgets/donation_widget/donation_alert.html"
+
+    def get(self, request, *args, **kwargs):
+        if not request.htmx:
+            return super().get(request, *args, **kwargs)
+
+        self.object = self.get_object()
+        ranges = {config.pk: (config.min_amount, config.max_amount) for config in self.object.configs.all()}
+
+        donation_to_show = (
+            Donation.objects.filter(streamer_id=self.object.user_id, shown=False)
+            .filter(reduce(lambda x, y: x | y, [Q(amount__range=range_) for range_ in ranges.values()]))
+            .order_by("created_at")
+            .first()
+        )
+
+        if not donation_to_show:
+            return HttpResponse("")
+
+        config_id = next(
+            (id_ for id_, range_ in ranges.items() if range_[0] <= donation_to_show.amount <= range_[1]),
+            None,
+        )
+        config = next((config for config in self.object.configs.all() if config.pk == config_id), None)
+
+        if not config:
+            return HttpResponse("No config found for this donation amount")
+
+        donation_to_show.shown = True
+        donation_to_show.save()
+
+        template_name = "widgets/donation_widget/donation_alert_content.html"
+
+        return render(request, template_name, {"donation": donation_to_show, "config": config})
+
+    def get_object(self, queryset=None):
+        try:
+            return self.model.objects.prefetch_related(
+                Prefetch("configs", queryset=DonationWidgetConfig.objects.order_by("id"))
+            ).get(link_identifier=self.kwargs.get("widget_identifier"))
+        except self.model.DoesNotExist as e:
+            raise Http404() from e

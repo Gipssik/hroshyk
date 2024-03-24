@@ -1,34 +1,38 @@
-{% load widget_filters %}
-
-<div class="donation-alert-container">
-    <img src="{{ config.image.url }}" alt="Картинка">
-    <h1 style="
-            font-weight: 900;
-            font-size: {{ config.title_font_size }}px;
-            color: {{ config.title_color }};
-            -webkit-text-stroke: 1px {{ config.title_shadow_color }};
-            word-break: break-all;
-            "
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Грошик</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/donation_alert.css' %}">
+</head>
+<body>
+    <div id="alert-container"
+         hx-get="{% url 'donation_alert' object.link_identifier %}"
+         hx-trigger="poll-alert"
+         hx-swap="innerHTML transition:true"
     >
-        {% if donation %}
-            {% format_string config.title_format nickname=donation.nickname amount=donation.amount %}
-        {% else %}
-            {% format_string config.title_format nickname="Anonymous" amount=100 %}
-        {% endif %}
-
-    </h1>
-    <div style="
-            font-weight: 900;
-            font-size: {{ config.message_font_size }}px;
-            color: {{ config.message_color }};
-            -webkit-text-stroke: 1px {{ config.title_shadow_color }};
-            word-wrap: break-word;
-            "
-    >
-        {% if donation %}
-            {{ donation.message|safe }}
-        {% else %}
-            Текст повідомлення
-        {% endif %}
     </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <script>
+        var timeoutId = null;
+        var triggerTimeout = () => {
+            timeoutId = setTimeout(function() {
+              htmx.trigger('#alert-container', 'poll-alert')
+              timeoutId = setTimeout(triggerTimeout, 2000)
+            }, 2000)
+        }
+        window.onload = () => {
+            triggerTimeout()
+        }
+    </script>
+</body>
+</html>
+
+

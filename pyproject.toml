@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hroshyk"
-version = "0.3.2"
+version = "0.3.3"
 description = "Ukrainian donation platform"
 authors = ["Gipss <gissa.dmtr@gmail.com>"]
 
